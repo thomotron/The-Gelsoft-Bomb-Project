@@ -1,0 +1,149 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J?
+U 1 1 5D7346A6
+P 5200 2350
+F 0 "J?" V 5296 2162 50  0000 R CNN
+F 1 "ISP" V 5205 2162 50  0000 R CNN
+F 2 "" H 5200 2350 50  0001 C CNN
+F 3 "~" H 5200 2350 50  0001 C CNN
+	1    5200 2350
+	1    0    0    -1  
+$EndComp
+Text GLabel 5000 2250 0    50   Output ~ 0
+5v
+Text GLabel 5000 2350 0    50   Output ~ 0
+MOSI
+Text GLabel 5500 2250 2    50   Input ~ 0
+MISO
+Text GLabel 5500 2350 2    50   Output ~ 0
+SCK
+Text GLabel 5500 2450 2    50   Output ~ 0
+RESET
+Text GLabel 5300 3150 1    50   Input ~ 0
+5v
+$Comp
+L power:Earth #PWR?
+U 1 1 5D74824F
+P 5000 2450
+F 0 "#PWR?" H 5000 2200 50  0001 C CNN
+F 1 "Earth" H 5000 2300 50  0001 C CNN
+F 2 "" H 5000 2450 50  0001 C CNN
+F 3 "~" H 5000 2450 50  0001 C CNN
+	1    5000 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D748395
+P 5300 5350
+F 0 "#PWR?" H 5300 5100 50  0001 C CNN
+F 1 "Earth" H 5300 5200 50  0001 C CNN
+F 2 "" H 5300 5350 50  0001 C CNN
+F 3 "~" H 5300 5350 50  0001 C CNN
+	1    5300 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:L7805 U?
+U 1 1 5D74AD90
+P 3650 2800
+F 0 "U?" H 3650 3042 50  0000 C CNN
+F 1 "L7805" H 3650 2951 50  0000 C CNN
+F 2 "" H 3675 2650 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 3650 2750 50  0001 C CNN
+	1    3650 2800
+	1    0    0    -1  
+$EndComp
+Text GLabel 3350 2800 0    50   Input ~ 0
+VIN
+Text GLabel 3950 2800 2    50   Output ~ 0
+5v
+$Comp
+L power:Earth #PWR?
+U 1 1 5D74BAAF
+P 3650 3100
+F 0 "#PWR?" H 3650 2850 50  0001 C CNN
+F 1 "Earth" H 3650 2950 50  0001 C CNN
+F 2 "" H 3650 3100 50  0001 C CNN
+F 3 "~" H 3650 3100 50  0001 C CNN
+	1    3650 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCU_Microchip_ATtiny:ATtiny861A-PU U?
+U 1 1 5D763D7B
+P 5300 4250
+F 0 "U?" H 4671 4296 50  0000 R CNN
+F 1 "ATtiny861A-PU" H 4671 4205 50  0000 R CNN
+F 2 "Package_DIP:DIP-20_W7.62mm" H 5300 4250 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc8197.pdf" H 5300 4250 50  0001 C CNN
+	1    5300 4250
+	1    0    0    -1  
+$EndComp
+Text GLabel 6000 4450 2    50   Output ~ 0
+BUZZER\MISO
+Text GLabel 6000 5050 2    50   Input ~ 0
+RESET
+Text GLabel 6000 4550 2    50   Input ~ 0
+SCK
+Text GLabel 6000 4650 2    50   Input ~ 0
+CORRECT
+Text GLabel 6000 4750 2    50   Input ~ 0
+STRIKE
+Text GLabel 6000 4850 2    50   Output ~ 0
+DISARM
+Text GLabel 6000 4950 2    50   Output ~ 0
+LOWPOWER
+Text GLabel 6000 4350 2    50   Input ~ 0
+MOSI
+$Comp
+L Device:Buzzer BZ?
+U 1 1 5D77FD04
+P 5300 1700
+F 0 "BZ?" H 5452 1729 50  0000 L CNN
+F 1 "Buzzer" H 5452 1638 50  0000 L CNN
+F 2 "" V 5275 1800 50  0001 C CNN
+F 3 "~" V 5275 1800 50  0001 C CNN
+	1    5300 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D780156
+P 5200 1800
+F 0 "#PWR?" H 5200 1550 50  0001 C CNN
+F 1 "Earth" H 5200 1650 50  0001 C CNN
+F 2 "" H 5200 1800 50  0001 C CNN
+F 3 "~" H 5200 1800 50  0001 C CNN
+	1    5200 1800
+	1    0    0    -1  
+$EndComp
+Text GLabel 5200 1600 0    50   Input ~ 0
+BUZZER\MISO
+$Comp
+L The~Gelsoft~Bomb~Project:HDSP-B09G U?
+U 1 1 5D7AEFBD
+P 9400 2150
+F 0 "U?" H 9400 2817 50  0000 C CNN
+F 1 "HDSP-B09G" H 9400 2726 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:HDSP-B08G" H 9400 1550 50  0001 C CNN
+F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/CC56-12CGKWA(Ver.8A).pdf" H 8970 2180 50  0001 C CNN
+	1    9400 2150
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

@@ -1,4 +1,680 @@
-EESchema Schematic File Version 2
-EELAYER 25 0
+EESchema Schematic File Version 4
+LIBS:The Bomb Project-cache
+EELAYER 30 0
 EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J?
+U 1 1 5D7346A6
+P 2550 2400
+F 0 "J?" V 2646 2212 50  0000 R CNN
+F 1 "ISP" V 2555 2212 50  0000 R CNN
+F 2 "" H 2550 2400 50  0001 C CNN
+F 3 "~" H 2550 2400 50  0001 C CNN
+	1    2550 2400
+	1    0    0    -1  
+$EndComp
+Text GLabel 2350 2300 0    50   Output ~ 0
+5v
+Text GLabel 2350 2400 0    50   Output ~ 0
+MOSI
+Text GLabel 2850 2300 2    50   Input ~ 0
+MISO
+Text GLabel 2850 2400 2    50   Output ~ 0
+SCK
+Text GLabel 2850 2500 2    50   Output ~ 0
+RESET
+Text GLabel 2600 3400 1    50   Input ~ 0
+5v
+$Comp
+L power:Earth #PWR?
+U 1 1 5D74824F
+P 2350 2500
+F 0 "#PWR?" H 2350 2250 50  0001 C CNN
+F 1 "Earth" H 2350 2350 50  0001 C CNN
+F 2 "" H 2350 2500 50  0001 C CNN
+F 3 "~" H 2350 2500 50  0001 C CNN
+	1    2350 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D748395
+P 2600 6400
+F 0 "#PWR?" H 2600 6150 50  0001 C CNN
+F 1 "Earth" H 2600 6250 50  0001 C CNN
+F 2 "" H 2600 6400 50  0001 C CNN
+F 3 "~" H 2600 6400 50  0001 C CNN
+	1    2600 6400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:L7805 U?
+U 1 1 5D74AD90
+P 1000 2850
+F 0 "U?" H 1000 3092 50  0000 C CNN
+F 1 "L7805" H 1000 3001 50  0000 C CNN
+F 2 "" H 1025 2700 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 1000 2800 50  0001 C CNN
+	1    1000 2850
+	1    0    0    -1  
+$EndComp
+Text GLabel 700  2850 0    50   Input ~ 0
+VIN
+Text GLabel 1300 2850 2    50   Output ~ 0
+5v
+$Comp
+L power:Earth #PWR?
+U 1 1 5D74BAAF
+P 1000 3150
+F 0 "#PWR?" H 1000 2900 50  0001 C CNN
+F 1 "Earth" H 1000 3000 50  0001 C CNN
+F 2 "" H 1000 3150 50  0001 C CNN
+F 3 "~" H 1000 3150 50  0001 C CNN
+	1    1000 3150
+	1    0    0    -1  
+$EndComp
+Text GLabel 3200 4100 2    50   Output ~ 0
+MISO
+Text GLabel 3200 5200 2    50   Input ~ 0
+RESET
+Text GLabel 3200 4200 2    50   Input ~ 0
+SCK
+Text GLabel 3200 3700 2    50   Input ~ 0
+CORRECT
+Text GLabel 3200 3800 2    50   Input ~ 0
+STRIKE
+Text GLabel 3200 3900 2    50   Output ~ 0
+DISARM
+Text GLabel 3200 4300 2    50   Output ~ 0
+LOWPOWER
+Text GLabel 3200 4000 2    50   Input ~ 0
+MOSI
+$Comp
+L Device:Buzzer BZ?
+U 1 1 5D77FD04
+P 2650 1750
+F 0 "BZ?" H 2802 1779 50  0000 L CNN
+F 1 "Buzzer" H 2802 1688 50  0000 L CNN
+F 2 "" V 2625 1850 50  0001 C CNN
+F 3 "~" V 2625 1850 50  0001 C CNN
+	1    2650 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D780156
+P 2550 1850
+F 0 "#PWR?" H 2550 1600 50  0001 C CNN
+F 1 "Earth" H 2550 1700 50  0001 C CNN
+F 2 "" H 2550 1850 50  0001 C CNN
+F 3 "~" H 2550 1850 50  0001 C CNN
+	1    2550 1850
+	1    0    0    -1  
+$EndComp
+Text GLabel 2550 1650 0    50   Input ~ 0
+BUZZER\MISO
+$Comp
+L The~Gelsoft~Bomb~Project:HDSP-B09G U?
+U 1 1 5D7AEFBD
+P 10000 3900
+F 0 "U?" H 10000 4567 50  0000 C CNN
+F 1 "HDSP-B09G" H 10000 4476 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:HDSP-B08G" H 10000 3300 50  0001 C CNN
+F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/CC56-12CGKWA(Ver.8A).pdf" H 9570 3930 50  0001 C CNN
+	1    10000 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCU_Microchip_ATmega:ATmega328P-PU U?
+U 1 1 5D738683
+P 2600 4900
+F 0 "U?" H 1956 4946 50  0000 R CNN
+F 1 "ATmega328P-PU" H 1956 4855 50  0000 R CNN
+F 2 "Package_DIP:DIP-28_W7.62mm" H 2600 4900 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 2600 4900 50  0001 C CNN
+	1    2600 4900
+	1    0    0    -1  
+$EndComp
+Text GLabel 3200 4400 2    50   Output ~ 0
+BUZZER
+$Comp
+L 74xx:74LS573 U?
+U 1 1 5D791462
+P 5350 3250
+F 0 "U?" H 5100 3900 50  0000 C CNN
+F 1 "74LS573" H 5550 3900 50  0000 C CNN
+F 2 "" H 5350 3250 50  0001 C CNN
+F 3 "74xx/74hc573.pdf" H 5350 3250 50  0001 C CNN
+	1    5350 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74LS573 U?
+U 1 1 5D794B76
+P 5350 5050
+F 0 "U?" H 5100 5700 50  0000 C CNN
+F 1 "74LS573" H 5550 5700 50  0000 C CNN
+F 2 "" H 5350 5050 50  0001 C CNN
+F 3 "74xx/74hc573.pdf" H 5350 5050 50  0001 C CNN
+	1    5350 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74xx:74LS573 U?
+U 1 1 5D795812
+P 5350 6850
+F 0 "U?" H 5100 7500 50  0000 C CNN
+F 1 "74LS573" H 5550 7500 50  0000 C CNN
+F 2 "" H 5350 6850 50  0001 C CNN
+F 3 "74xx/74hc573.pdf" H 5350 6850 50  0001 C CNN
+	1    5350 6850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4850 950  4600 950 
+Wire Wire Line
+	4600 950  4600 2750
+Wire Wire Line
+	4600 2750 4850 2750
+Wire Wire Line
+	4600 2750 4600 4550
+Wire Wire Line
+	4600 4550 4850 4550
+Connection ~ 4600 2750
+Wire Wire Line
+	4600 4550 4600 6100
+Wire Wire Line
+	4600 6350 4850 6350
+Connection ~ 4600 4550
+Wire Wire Line
+	4850 1050 4500 1050
+Wire Wire Line
+	4500 1050 4500 2850
+Wire Wire Line
+	4500 2850 4850 2850
+Wire Wire Line
+	4500 2850 4500 4650
+Wire Wire Line
+	4500 4650 4850 4650
+Connection ~ 4500 2850
+Wire Wire Line
+	4500 4650 4500 6000
+Wire Wire Line
+	4500 6450 4850 6450
+Connection ~ 4500 4650
+Wire Wire Line
+	4850 6550 4400 6550
+Wire Wire Line
+	4400 6550 4400 5900
+Wire Wire Line
+	4400 4750 4850 4750
+Wire Wire Line
+	4400 4750 4400 2950
+Wire Wire Line
+	4400 2950 4850 2950
+Connection ~ 4400 4750
+Wire Wire Line
+	4400 1150 4850 1150
+Connection ~ 4400 2950
+Wire Wire Line
+	4850 1250 4300 1250
+Wire Wire Line
+	4300 1250 4300 3050
+Wire Wire Line
+	4300 3050 4850 3050
+Wire Wire Line
+	4300 3050 4300 4850
+Wire Wire Line
+	4300 4850 4850 4850
+Connection ~ 4300 3050
+Wire Wire Line
+	4300 4850 4300 5800
+Wire Wire Line
+	4300 6650 4850 6650
+Connection ~ 4300 4850
+Wire Wire Line
+	4850 6750 4200 6750
+Wire Wire Line
+	4200 6750 4200 5700
+Wire Wire Line
+	4200 4950 4850 4950
+Wire Wire Line
+	4200 4950 4200 3150
+Wire Wire Line
+	4200 3150 4850 3150
+Connection ~ 4200 4950
+Wire Wire Line
+	4850 1350 4200 1350
+Wire Wire Line
+	4200 1350 4200 3150
+Connection ~ 4200 3150
+Wire Wire Line
+	4850 6850 4100 6850
+Wire Wire Line
+	4100 6850 4100 5600
+Wire Wire Line
+	4100 5050 4850 5050
+Wire Wire Line
+	4100 5050 4100 3250
+Wire Wire Line
+	4100 3250 4850 3250
+Connection ~ 4100 5050
+Wire Wire Line
+	4100 3250 4100 1450
+Connection ~ 4100 3250
+Wire Wire Line
+	4850 1550 4000 1550
+Wire Wire Line
+	4000 1550 4000 3350
+Wire Wire Line
+	4000 3350 4850 3350
+Wire Wire Line
+	4000 3350 4000 5150
+Wire Wire Line
+	4000 5150 4850 5150
+Connection ~ 4000 3350
+Wire Wire Line
+	4000 5150 4000 5500
+Wire Wire Line
+	4000 6950 4850 6950
+Connection ~ 4000 5150
+Wire Wire Line
+	4850 7050 3900 7050
+Wire Wire Line
+	3900 7050 3900 5400
+Wire Wire Line
+	4850 5250 3900 5250
+Wire Wire Line
+	3900 5250 3900 3450
+Wire Wire Line
+	3900 3450 4850 3450
+Connection ~ 3900 5250
+Wire Wire Line
+	3900 3450 3900 1650
+Wire Wire Line
+	3900 1650 4850 1650
+Connection ~ 3900 3450
+Wire Wire Line
+	5850 950  6100 950 
+Wire Wire Line
+	6100 950  6100 2750
+Wire Wire Line
+	6100 6350 5850 6350
+Wire Wire Line
+	5850 4550 6100 4550
+Connection ~ 6100 4550
+Wire Wire Line
+	6100 4550 6100 6350
+Wire Wire Line
+	5850 2750 6100 2750
+Connection ~ 6100 2750
+Wire Wire Line
+	6100 2750 6100 3650
+Wire Wire Line
+	5850 1050 6200 1050
+Wire Wire Line
+	6200 6450 5850 6450
+Wire Wire Line
+	5850 6550 6300 6550
+Wire Wire Line
+	6300 6550 6300 4750
+Wire Wire Line
+	6300 1150 5850 1150
+Wire Wire Line
+	5850 1250 6400 1250
+Wire Wire Line
+	6400 1250 6400 3050
+Wire Wire Line
+	6400 6650 5850 6650
+Wire Wire Line
+	5850 6750 6500 6750
+Wire Wire Line
+	6500 6750 6500 4950
+Wire Wire Line
+	6500 1350 5850 1350
+Wire Wire Line
+	6600 1450 6600 3250
+Wire Wire Line
+	6600 6850 5850 6850
+Wire Wire Line
+	5850 6950 6700 6950
+Wire Wire Line
+	6700 6950 6700 5150
+Wire Wire Line
+	5850 1550 6700 1550
+Wire Wire Line
+	5850 1650 6800 1650
+Wire Wire Line
+	6800 1650 6800 3450
+Wire Wire Line
+	6800 7050 5850 7050
+Wire Wire Line
+	5850 2850 6200 2850
+Connection ~ 6200 2850
+Wire Wire Line
+	6200 2850 6200 3750
+Wire Wire Line
+	5850 2950 6300 2950
+Connection ~ 6300 2950
+Wire Wire Line
+	6300 2950 6300 1150
+Wire Wire Line
+	6400 3050 5850 3050
+Connection ~ 6400 3050
+Wire Wire Line
+	6400 3050 6400 3950
+Wire Wire Line
+	5850 3150 6500 3150
+Connection ~ 6500 3150
+Wire Wire Line
+	6500 3150 6500 1350
+Wire Wire Line
+	6600 3250 5850 3250
+Connection ~ 6600 3250
+Wire Wire Line
+	6600 3250 6600 4150
+Wire Wire Line
+	5850 3350 6700 3350
+Connection ~ 6700 3350
+Wire Wire Line
+	6700 3350 6700 1550
+Wire Wire Line
+	6800 3450 5850 3450
+Connection ~ 6800 3450
+Wire Wire Line
+	6800 3450 6800 4350
+Wire Wire Line
+	5850 4650 6200 4650
+Connection ~ 6200 4650
+Wire Wire Line
+	6200 4650 6200 6450
+Wire Wire Line
+	6300 4750 5850 4750
+Connection ~ 6300 4750
+Wire Wire Line
+	5850 4850 6400 4850
+Connection ~ 6400 4850
+Wire Wire Line
+	6400 4850 6400 6650
+Wire Wire Line
+	6500 4950 5850 4950
+Connection ~ 6500 4950
+Wire Wire Line
+	5850 5050 6600 5050
+Connection ~ 6600 5050
+Wire Wire Line
+	6600 5050 6600 6850
+Wire Wire Line
+	5850 5150 6700 5150
+Connection ~ 6700 5150
+Wire Wire Line
+	5850 5250 6800 5250
+Connection ~ 6800 5250
+Wire Wire Line
+	6800 5250 6800 7050
+$Comp
+L power:Earth #PWR?
+U 1 1 5D8461E1
+P 5350 5850
+F 0 "#PWR?" H 5350 5600 50  0001 C CNN
+F 1 "Earth" H 5350 5700 50  0001 C CNN
+F 2 "" H 5350 5850 50  0001 C CNN
+F 3 "~" H 5350 5850 50  0001 C CNN
+	1    5350 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D84682B
+P 5350 7650
+F 0 "#PWR?" H 5350 7400 50  0001 C CNN
+F 1 "Earth" H 5350 7500 50  0001 C CNN
+F 2 "" H 5350 7650 50  0001 C CNN
+F 3 "~" H 5350 7650 50  0001 C CNN
+	1    5350 7650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D846BA3
+P 5350 4050
+F 0 "#PWR?" H 5350 3800 50  0001 C CNN
+F 1 "Earth" H 5350 3900 50  0001 C CNN
+F 2 "" H 5350 4050 50  0001 C CNN
+F 3 "~" H 5350 4050 50  0001 C CNN
+	1    5350 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 5D849367
+P 5350 2250
+F 0 "#PWR?" H 5350 2000 50  0001 C CNN
+F 1 "Earth" H 5350 2100 50  0001 C CNN
+F 2 "" H 5350 2250 50  0001 C CNN
+F 3 "~" H 5350 2250 50  0001 C CNN
+	1    5350 2250
+	1    0    0    -1  
+$EndComp
+Text GLabel 5350 650  0    50   Output ~ 0
+5v
+Text GLabel 5350 2450 0    50   Output ~ 0
+5v
+Wire Wire Line
+	5850 1450 6600 1450
+Wire Wire Line
+	6200 1050 6200 2850
+Wire Wire Line
+	4100 1450 4850 1450
+Wire Wire Line
+	4400 2950 4400 1150
+$Comp
+L 74xx:74LS573 U?
+U 1 1 5D785234
+P 5350 1450
+F 0 "U?" H 5100 2100 50  0000 C CNN
+F 1 "74LS573" H 5550 2100 50  0000 C CNN
+F 2 "" H 5350 1450 50  0001 C CNN
+F 3 "74xx/74hc573.pdf" H 5350 1450 50  0001 C CNN
+	1    5350 1450
+	1    0    0    -1  
+$EndComp
+Text GLabel 5350 4250 0    50   Output ~ 0
+5v
+Text GLabel 5350 6050 0    50   Output ~ 0
+5v
+Wire Wire Line
+	7250 3650 6100 3650
+Connection ~ 6100 3650
+Wire Wire Line
+	6200 3750 7250 3750
+Connection ~ 6200 3750
+Wire Wire Line
+	7250 3850 6300 3850
+Connection ~ 6300 3850
+Wire Wire Line
+	6400 3950 7250 3950
+Connection ~ 6400 3950
+Wire Wire Line
+	7250 4050 6500 4050
+Connection ~ 6500 4050
+Wire Wire Line
+	6600 4150 7250 4150
+Connection ~ 6600 4150
+Wire Wire Line
+	7250 4250 6700 4250
+Connection ~ 6700 4250
+Wire Wire Line
+	7250 4350 6800 4350
+Connection ~ 6800 4350
+Wire Wire Line
+	6300 3850 6300 2950
+Wire Wire Line
+	6500 4050 6500 3150
+Wire Wire Line
+	6700 4250 6700 3350
+Wire Wire Line
+	6300 3850 6300 4750
+Wire Wire Line
+	6500 4050 6500 4950
+Wire Wire Line
+	6700 4250 6700 5150
+Wire Wire Line
+	6100 3650 6100 4550
+Wire Wire Line
+	6200 3750 6200 4650
+Wire Wire Line
+	6400 3950 6400 4850
+Wire Wire Line
+	6600 4150 6600 5050
+Wire Wire Line
+	6800 4350 6800 5250
+Wire Wire Line
+	3200 5400 3900 5400
+Connection ~ 3900 5400
+Wire Wire Line
+	3900 5400 3900 5250
+Wire Wire Line
+	3200 5500 4000 5500
+Connection ~ 4000 5500
+Wire Wire Line
+	4000 5500 4000 6950
+Wire Wire Line
+	3200 5600 4100 5600
+Connection ~ 4100 5600
+Wire Wire Line
+	4100 5600 4100 5050
+Wire Wire Line
+	3200 5700 4200 5700
+Connection ~ 4200 5700
+Wire Wire Line
+	4200 5700 4200 4950
+Wire Wire Line
+	3200 5800 4300 5800
+Connection ~ 4300 5800
+Wire Wire Line
+	4300 5800 4300 6650
+Wire Wire Line
+	3200 5900 4400 5900
+Connection ~ 4400 5900
+Wire Wire Line
+	4400 5900 4400 4750
+Wire Wire Line
+	4500 6000 3200 6000
+Connection ~ 4500 6000
+Wire Wire Line
+	4500 6000 4500 6450
+Wire Wire Line
+	3200 6100 4600 6100
+Connection ~ 4600 6100
+Wire Wire Line
+	4600 6100 4600 6350
+Text GLabel 3200 4600 2    50   Output ~ 0
+D1EN
+Text GLabel 3200 4700 2    50   Output ~ 0
+D2EN
+Text GLabel 3200 4800 2    50   Output ~ 0
+D3EN
+Text GLabel 3200 4900 2    50   Output ~ 0
+D4EN
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9A5974
+P 7900 2200
+F 0 "Q?" H 8106 2246 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 2155 50  0000 L CNN
+F 2 "" H 8100 2300 50  0001 C CNN
+F 3 "~" H 7900 2200 50  0001 C CNN
+	1    7900 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9A6BEA
+P 7900 2750
+F 0 "Q?" H 8106 2796 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 2705 50  0000 L CNN
+F 2 "" H 8100 2850 50  0001 C CNN
+F 3 "~" H 7900 2750 50  0001 C CNN
+	1    7900 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9A73F3
+P 7900 3300
+F 0 "Q?" H 8106 3346 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 3255 50  0000 L CNN
+F 2 "" H 8100 3400 50  0001 C CNN
+F 3 "~" H 7900 3300 50  0001 C CNN
+	1    7900 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9ABE32
+P 7900 3850
+F 0 "Q?" H 8106 3896 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 3805 50  0000 L CNN
+F 2 "" H 8100 3950 50  0001 C CNN
+F 3 "~" H 7900 3850 50  0001 C CNN
+	1    7900 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9AC61A
+P 7900 4400
+F 0 "Q?" H 8106 4446 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 4355 50  0000 L CNN
+F 2 "" H 8100 4500 50  0001 C CNN
+F 3 "~" H 7900 4400 50  0001 C CNN
+	1    7900 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9AF813
+P 7900 4950
+F 0 "Q?" H 8106 4996 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 4905 50  0000 L CNN
+F 2 "" H 8100 5050 50  0001 C CNN
+F 3 "~" H 7900 4950 50  0001 C CNN
+	1    7900 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9B0E64
+P 7900 5500
+F 0 "Q?" H 8106 5546 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 5455 50  0000 L CNN
+F 2 "" H 8100 5600 50  0001 C CNN
+F 3 "~" H 7900 5500 50  0001 C CNN
+	1    7900 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Q_NMOS_GSD Q?
+U 1 1 5D9B319A
+P 7900 1650
+F 0 "Q?" H 8106 1696 50  0000 L CNN
+F 1 "Q_NMOS_GSD" H 8106 1605 50  0000 L CNN
+F 2 "" H 8100 1750 50  0001 C CNN
+F 3 "~" H 7900 1650 50  0001 C CNN
+	1    7900 1650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
