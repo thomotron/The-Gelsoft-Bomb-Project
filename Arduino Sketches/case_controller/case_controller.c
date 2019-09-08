@@ -1,3 +1,17 @@
+// This file is written to correspond with the
+// following pinout:
+//
+//                    ATTiny24A
+//                   .----v----.
+//              Vcc -| 1    14 |- GND
+// B0   MAX7219 DIN -| 2    13 |- CORRECT IN    A0
+// B1   MAX7219 CLK -| 3    12 |- STRIKE IN     A1
+// B3     ISP RESET -| 4    11 |- DISARM OUT    A2
+// B2  MAX7219 LOAD -| 5    10 |- LOWPOWER OUT  A3
+// A7        BUZZER -| 6     9 |- ISP SCK       A4
+// A6      ISP MOSI -| 7     8 |- ISP MISO      A5
+//                   *---------*
+
 #include <avr/interrupt.h>
 
 bool running = true;
