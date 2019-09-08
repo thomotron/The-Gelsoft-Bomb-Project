@@ -63,8 +63,8 @@ $Comp
 L Regulator_Linear:L7805 U?
 U 1 1 5D74AD90
 P 1900 2700
-F 0 "U?" H 1900 2942 50  0000 C CNN
-F 1 "L7805" H 1900 2851 50  0000 C CNN
+F 0 "U?" H 1750 2850 50  0000 C CNN
+F 1 "L7805" H 2050 2850 50  0000 C CNN
 F 2 "" H 1925 2550 50  0001 L CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 1900 2650 50  0001 C CNN
 	1    1900 2700
@@ -283,7 +283,7 @@ L Connector:DB9_Male J?
 U 1 1 5D86BF6C
 P 2000 5150
 F 0 "J?" H 1800 5750 50  0000 L CNN
-F 1 "DB9 Male" H 2000 5750 50  0000 L CNN
+F 1 "Module Connector" H 2000 5750 50  0000 L CNN
 F 2 "" H 2000 5150 50  0001 C CNN
 F 3 " ~" H 2000 5150 50  0001 C CNN
 	1    2000 5150
@@ -308,6 +308,30 @@ F 1 "Earth" H 1700 5400 50  0001 C CNN
 F 2 "" H 1700 5550 50  0001 C CNN
 F 3 "~" H 1700 5550 50  0001 C CNN
 	1    1700 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 5D74C8FE
+P 2000 6150
+F 0 "J?" H 1972 6032 50  0000 R CNN
+F 1 "Battery Header" H 1972 6123 50  0000 R CNN
+F 2 "" H 2000 6150 50  0001 C CNN
+F 3 "~" H 2000 6150 50  0001 C CNN
+	1    2000 6150
+	-1   0    0    1   
+$EndComp
+Text GLabel 1800 6050 0    50   Output ~ 0
+VIN
+$Comp
+L power:Earth #PWR?
+U 1 1 5D750EEE
+P 1800 6150
+F 0 "#PWR?" H 1800 5900 50  0001 C CNN
+F 1 "Earth" H 1800 6000 50  0001 C CNN
+F 2 "" H 1800 6150 50  0001 C CNN
+F 3 "~" H 1800 6150 50  0001 C CNN
+	1    1800 6150
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
