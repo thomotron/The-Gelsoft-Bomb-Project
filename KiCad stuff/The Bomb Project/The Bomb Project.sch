@@ -20,7 +20,7 @@ U 1 1 5D7346A6
 P 1850 4000
 F 0 "J1" H 1850 4200 50  0000 R CNN
 F 1 "ISP" H 2050 4200 50  0000 R CNN
-F 2 "" H 1850 4000 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 1850 4000 50  0001 C CNN
 F 3 "~" H 1850 4000 50  0001 C CNN
 	1    1850 4000
 	1    0    0    -1  
@@ -65,7 +65,7 @@ U 1 1 5D74AD90
 P 1900 2700
 F 0 "U1" H 1750 2850 50  0000 C CNN
 F 1 "L7805" H 2050 2850 50  0000 C CNN
-F 2 "" H 1925 2550 50  0001 L CIN
+F 2 "Package_TO_SOT_THT:TO-220-4_Vertical" H 1925 2550 50  0001 L CIN
 F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 1900 2650 50  0001 C CNN
 	1    1900 2700
 	1    0    0    -1  
@@ -103,7 +103,7 @@ U 1 1 5D77FD04
 P 1850 3400
 F 0 "BZ1" H 2002 3429 50  0000 L CNN
 F 1 "Buzzer" H 2002 3338 50  0000 L CNN
-F 2 "" V 1825 3500 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" V 1825 3500 50  0001 C CNN
 F 3 "~" V 1825 3500 50  0001 C CNN
 	1    1850 3400
 	1    0    0    -1  
@@ -173,7 +173,7 @@ U 1 1 5D751E05
 P 6300 4300
 F 0 "U3" H 5900 5050 50  0000 C CNN
 F 1 "MAX7219" H 6550 5050 50  0000 C CNN
-F 2 "" H 6350 5000 50  0001 C CNN
+F 2 "Package_DIP:DIP-24_W7.62mm" H 6350 5000 50  0001 C CNN
 F 3 "" H 6350 5000 50  0001 C CNN
 	1    6300 4300
 	1    0    0    -1  
@@ -199,7 +199,7 @@ U 1 1 5D770D47
 P 7000 3550
 F 0 "R1" H 6930 3504 50  0000 R CNN
 F 1 "20k" H 6930 3595 50  0000 R CNN
-F 2 "" V 6930 3550 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0614_L14.3mm_D5.7mm_P20.32mm_Horizontal" V 6930 3550 50  0001 C CNN
 F 3 "~" H 7000 3550 50  0001 C CNN
 	1    7000 3550
 	-1   0    0    1   
@@ -284,7 +284,7 @@ U 1 1 5D86BF6C
 P 2000 5150
 F 0 "J2" H 1800 5750 50  0000 L CNN
 F 1 "Module Connector" H 2000 5750 50  0000 L CNN
-F 2 "" H 2000 5150 50  0001 C CNN
+F 2 "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 2000 5150 50  0001 C CNN
 F 3 " ~" H 2000 5150 50  0001 C CNN
 	1    2000 5150
 	1    0    0    -1  
@@ -316,7 +316,7 @@ U 1 1 5D74C8FE
 P 2000 6150
 F 0 "J3" H 1972 6032 50  0000 R CNN
 F 1 "Battery Header" H 1972 6123 50  0000 R CNN
-F 2 "" H 2000 6150 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2000 6150 50  0001 C CNN
 F 3 "~" H 2000 6150 50  0001 C CNN
 	1    2000 6150
 	-1   0    0    1   
