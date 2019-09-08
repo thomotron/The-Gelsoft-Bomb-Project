@@ -289,7 +289,7 @@ F 3 " ~" H 2000 5150 50  0001 C CNN
 	1    2000 5150
 	1    0    0    -1  
 $EndComp
-Text GLabel 1700 4750 0    50   Input ~ 0
+Text GLabel 1700 4750 0    50   BiDi ~ 0
 5v
 Text GLabel 1700 5450 0    50   Output ~ 0
 CORRECT
@@ -321,6 +321,8 @@ F 3 "~" H 2000 6150 50  0001 C CNN
 	1    2000 6150
 	-1   0    0    1   
 $EndComp
+Text GLabel 1700 4950 0    50   BiDi ~ 0
+VIN
 Text GLabel 1800 6050 0    50   Output ~ 0
 VIN
 $Comp
