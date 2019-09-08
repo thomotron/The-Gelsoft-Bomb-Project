@@ -91,14 +91,10 @@ Text GLabel 3200 5200 2    50   Input ~ 0
 RESET
 Text GLabel 3200 4200 2    50   Input ~ 0
 SCK
-Text GLabel 3200 3700 2    50   Input ~ 0
-CORRECT
 Text GLabel 3200 3800 2    50   Input ~ 0
 STRIKE
 Text GLabel 3200 3900 2    50   Output ~ 0
 DISARM
-Text GLabel 3200 4300 2    50   Output ~ 0
-LOWPOWER
 Text GLabel 3200 4000 2    50   Input ~ 0
 MOSI
 $Comp
@@ -126,17 +122,6 @@ $EndComp
 Text GLabel 2550 1650 0    50   Input ~ 0
 BUZZER\MISO
 $Comp
-L The~Gelsoft~Bomb~Project:HDSP-B09G U?
-U 1 1 5D7AEFBD
-P 10000 3900
-F 0 "U?" H 10000 4567 50  0000 C CNN
-F 1 "HDSP-B09G" H 10000 4476 50  0000 C CNN
-F 2 "The Gelsoft Bomb Project:HDSP-B08G" H 10000 3300 50  0001 C CNN
-F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/CC56-12CGKWA(Ver.8A).pdf" H 9570 3930 50  0001 C CNN
-	1    10000 3900
-	1    0    0    -1  
-$EndComp
-$Comp
 L MCU_Microchip_ATmega:ATmega328P-PU U?
 U 1 1 5D738683
 P 2600 4900
@@ -149,438 +134,6 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20w
 $EndComp
 Text GLabel 3200 4400 2    50   Output ~ 0
 BUZZER
-$Comp
-L 74xx:74LS573 U?
-U 1 1 5D791462
-P 5350 3250
-F 0 "U?" H 5100 3900 50  0000 C CNN
-F 1 "74LS573" H 5550 3900 50  0000 C CNN
-F 2 "" H 5350 3250 50  0001 C CNN
-F 3 "74xx/74hc573.pdf" H 5350 3250 50  0001 C CNN
-	1    5350 3250
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS573 U?
-U 1 1 5D794B76
-P 5350 5050
-F 0 "U?" H 5100 5700 50  0000 C CNN
-F 1 "74LS573" H 5550 5700 50  0000 C CNN
-F 2 "" H 5350 5050 50  0001 C CNN
-F 3 "74xx/74hc573.pdf" H 5350 5050 50  0001 C CNN
-	1    5350 5050
-	1    0    0    -1  
-$EndComp
-$Comp
-L 74xx:74LS573 U?
-U 1 1 5D795812
-P 5350 6850
-F 0 "U?" H 5100 7500 50  0000 C CNN
-F 1 "74LS573" H 5550 7500 50  0000 C CNN
-F 2 "" H 5350 6850 50  0001 C CNN
-F 3 "74xx/74hc573.pdf" H 5350 6850 50  0001 C CNN
-	1    5350 6850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4850 950  4600 950 
-Wire Wire Line
-	4600 950  4600 2750
-Wire Wire Line
-	4600 2750 4850 2750
-Wire Wire Line
-	4600 2750 4600 4550
-Wire Wire Line
-	4600 4550 4850 4550
-Connection ~ 4600 2750
-Wire Wire Line
-	4600 4550 4600 6100
-Wire Wire Line
-	4600 6350 4850 6350
-Connection ~ 4600 4550
-Wire Wire Line
-	4850 1050 4500 1050
-Wire Wire Line
-	4500 1050 4500 2850
-Wire Wire Line
-	4500 2850 4850 2850
-Wire Wire Line
-	4500 2850 4500 4650
-Wire Wire Line
-	4500 4650 4850 4650
-Connection ~ 4500 2850
-Wire Wire Line
-	4500 4650 4500 6000
-Wire Wire Line
-	4500 6450 4850 6450
-Connection ~ 4500 4650
-Wire Wire Line
-	4850 6550 4400 6550
-Wire Wire Line
-	4400 6550 4400 5900
-Wire Wire Line
-	4400 4750 4850 4750
-Wire Wire Line
-	4400 4750 4400 2950
-Wire Wire Line
-	4400 2950 4850 2950
-Connection ~ 4400 4750
-Wire Wire Line
-	4400 1150 4850 1150
-Connection ~ 4400 2950
-Wire Wire Line
-	4850 1250 4300 1250
-Wire Wire Line
-	4300 1250 4300 3050
-Wire Wire Line
-	4300 3050 4850 3050
-Wire Wire Line
-	4300 3050 4300 4850
-Wire Wire Line
-	4300 4850 4850 4850
-Connection ~ 4300 3050
-Wire Wire Line
-	4300 4850 4300 5800
-Wire Wire Line
-	4300 6650 4850 6650
-Connection ~ 4300 4850
-Wire Wire Line
-	4850 6750 4200 6750
-Wire Wire Line
-	4200 6750 4200 5700
-Wire Wire Line
-	4200 4950 4850 4950
-Wire Wire Line
-	4200 4950 4200 3150
-Wire Wire Line
-	4200 3150 4850 3150
-Connection ~ 4200 4950
-Wire Wire Line
-	4850 1350 4200 1350
-Wire Wire Line
-	4200 1350 4200 3150
-Connection ~ 4200 3150
-Wire Wire Line
-	4850 6850 4100 6850
-Wire Wire Line
-	4100 6850 4100 5600
-Wire Wire Line
-	4100 5050 4850 5050
-Wire Wire Line
-	4100 5050 4100 3250
-Wire Wire Line
-	4100 3250 4850 3250
-Connection ~ 4100 5050
-Wire Wire Line
-	4100 3250 4100 1450
-Connection ~ 4100 3250
-Wire Wire Line
-	4850 1550 4000 1550
-Wire Wire Line
-	4000 1550 4000 3350
-Wire Wire Line
-	4000 3350 4850 3350
-Wire Wire Line
-	4000 3350 4000 5150
-Wire Wire Line
-	4000 5150 4850 5150
-Connection ~ 4000 3350
-Wire Wire Line
-	4000 5150 4000 5500
-Wire Wire Line
-	4000 6950 4850 6950
-Connection ~ 4000 5150
-Wire Wire Line
-	4850 7050 3900 7050
-Wire Wire Line
-	3900 7050 3900 5400
-Wire Wire Line
-	4850 5250 3900 5250
-Wire Wire Line
-	3900 5250 3900 3450
-Wire Wire Line
-	3900 3450 4850 3450
-Connection ~ 3900 5250
-Wire Wire Line
-	3900 3450 3900 1650
-Wire Wire Line
-	3900 1650 4850 1650
-Connection ~ 3900 3450
-Wire Wire Line
-	5850 950  6100 950 
-Wire Wire Line
-	6100 950  6100 2750
-Wire Wire Line
-	6100 6350 5850 6350
-Wire Wire Line
-	5850 4550 6100 4550
-Connection ~ 6100 4550
-Wire Wire Line
-	6100 4550 6100 6350
-Wire Wire Line
-	5850 2750 6100 2750
-Connection ~ 6100 2750
-Wire Wire Line
-	6100 2750 6100 3650
-Wire Wire Line
-	5850 1050 6200 1050
-Wire Wire Line
-	6200 6450 5850 6450
-Wire Wire Line
-	5850 6550 6300 6550
-Wire Wire Line
-	6300 6550 6300 4750
-Wire Wire Line
-	6300 1150 5850 1150
-Wire Wire Line
-	5850 1250 6400 1250
-Wire Wire Line
-	6400 1250 6400 3050
-Wire Wire Line
-	6400 6650 5850 6650
-Wire Wire Line
-	5850 6750 6500 6750
-Wire Wire Line
-	6500 6750 6500 4950
-Wire Wire Line
-	6500 1350 5850 1350
-Wire Wire Line
-	6600 1450 6600 3250
-Wire Wire Line
-	6600 6850 5850 6850
-Wire Wire Line
-	5850 6950 6700 6950
-Wire Wire Line
-	6700 6950 6700 5150
-Wire Wire Line
-	5850 1550 6700 1550
-Wire Wire Line
-	5850 1650 6800 1650
-Wire Wire Line
-	6800 1650 6800 3450
-Wire Wire Line
-	6800 7050 5850 7050
-Wire Wire Line
-	5850 2850 6200 2850
-Connection ~ 6200 2850
-Wire Wire Line
-	6200 2850 6200 3750
-Wire Wire Line
-	5850 2950 6300 2950
-Connection ~ 6300 2950
-Wire Wire Line
-	6300 2950 6300 1150
-Wire Wire Line
-	6400 3050 5850 3050
-Connection ~ 6400 3050
-Wire Wire Line
-	6400 3050 6400 3950
-Wire Wire Line
-	5850 3150 6500 3150
-Connection ~ 6500 3150
-Wire Wire Line
-	6500 3150 6500 1350
-Wire Wire Line
-	6600 3250 5850 3250
-Connection ~ 6600 3250
-Wire Wire Line
-	6600 3250 6600 4150
-Wire Wire Line
-	5850 3350 6700 3350
-Connection ~ 6700 3350
-Wire Wire Line
-	6700 3350 6700 1550
-Wire Wire Line
-	6800 3450 5850 3450
-Connection ~ 6800 3450
-Wire Wire Line
-	6800 3450 6800 4350
-Wire Wire Line
-	5850 4650 6200 4650
-Connection ~ 6200 4650
-Wire Wire Line
-	6200 4650 6200 6450
-Wire Wire Line
-	6300 4750 5850 4750
-Connection ~ 6300 4750
-Wire Wire Line
-	5850 4850 6400 4850
-Connection ~ 6400 4850
-Wire Wire Line
-	6400 4850 6400 6650
-Wire Wire Line
-	6500 4950 5850 4950
-Connection ~ 6500 4950
-Wire Wire Line
-	5850 5050 6600 5050
-Connection ~ 6600 5050
-Wire Wire Line
-	6600 5050 6600 6850
-Wire Wire Line
-	5850 5150 6700 5150
-Connection ~ 6700 5150
-Wire Wire Line
-	5850 5250 6800 5250
-Connection ~ 6800 5250
-Wire Wire Line
-	6800 5250 6800 7050
-$Comp
-L power:Earth #PWR?
-U 1 1 5D8461E1
-P 5350 5850
-F 0 "#PWR?" H 5350 5600 50  0001 C CNN
-F 1 "Earth" H 5350 5700 50  0001 C CNN
-F 2 "" H 5350 5850 50  0001 C CNN
-F 3 "~" H 5350 5850 50  0001 C CNN
-	1    5350 5850
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:Earth #PWR?
-U 1 1 5D84682B
-P 5350 7650
-F 0 "#PWR?" H 5350 7400 50  0001 C CNN
-F 1 "Earth" H 5350 7500 50  0001 C CNN
-F 2 "" H 5350 7650 50  0001 C CNN
-F 3 "~" H 5350 7650 50  0001 C CNN
-	1    5350 7650
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:Earth #PWR?
-U 1 1 5D846BA3
-P 5350 4050
-F 0 "#PWR?" H 5350 3800 50  0001 C CNN
-F 1 "Earth" H 5350 3900 50  0001 C CNN
-F 2 "" H 5350 4050 50  0001 C CNN
-F 3 "~" H 5350 4050 50  0001 C CNN
-	1    5350 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:Earth #PWR?
-U 1 1 5D849367
-P 5350 2250
-F 0 "#PWR?" H 5350 2000 50  0001 C CNN
-F 1 "Earth" H 5350 2100 50  0001 C CNN
-F 2 "" H 5350 2250 50  0001 C CNN
-F 3 "~" H 5350 2250 50  0001 C CNN
-	1    5350 2250
-	1    0    0    -1  
-$EndComp
-Text GLabel 5350 650  0    50   Output ~ 0
-5v
-Text GLabel 5350 2450 0    50   Output ~ 0
-5v
-Wire Wire Line
-	5850 1450 6600 1450
-Wire Wire Line
-	6200 1050 6200 2850
-Wire Wire Line
-	4100 1450 4850 1450
-Wire Wire Line
-	4400 2950 4400 1150
-$Comp
-L 74xx:74LS573 U?
-U 1 1 5D785234
-P 5350 1450
-F 0 "U?" H 5100 2100 50  0000 C CNN
-F 1 "74LS573" H 5550 2100 50  0000 C CNN
-F 2 "" H 5350 1450 50  0001 C CNN
-F 3 "74xx/74hc573.pdf" H 5350 1450 50  0001 C CNN
-	1    5350 1450
-	1    0    0    -1  
-$EndComp
-Text GLabel 5350 4250 0    50   Output ~ 0
-5v
-Text GLabel 5350 6050 0    50   Output ~ 0
-5v
-Wire Wire Line
-	7250 3650 6100 3650
-Connection ~ 6100 3650
-Wire Wire Line
-	6200 3750 7250 3750
-Connection ~ 6200 3750
-Wire Wire Line
-	7250 3850 6300 3850
-Connection ~ 6300 3850
-Wire Wire Line
-	6400 3950 7250 3950
-Connection ~ 6400 3950
-Wire Wire Line
-	7250 4050 6500 4050
-Connection ~ 6500 4050
-Wire Wire Line
-	6600 4150 7250 4150
-Connection ~ 6600 4150
-Wire Wire Line
-	7250 4250 6700 4250
-Connection ~ 6700 4250
-Wire Wire Line
-	7250 4350 6800 4350
-Connection ~ 6800 4350
-Wire Wire Line
-	6300 3850 6300 2950
-Wire Wire Line
-	6500 4050 6500 3150
-Wire Wire Line
-	6700 4250 6700 3350
-Wire Wire Line
-	6300 3850 6300 4750
-Wire Wire Line
-	6500 4050 6500 4950
-Wire Wire Line
-	6700 4250 6700 5150
-Wire Wire Line
-	6100 3650 6100 4550
-Wire Wire Line
-	6200 3750 6200 4650
-Wire Wire Line
-	6400 3950 6400 4850
-Wire Wire Line
-	6600 4150 6600 5050
-Wire Wire Line
-	6800 4350 6800 5250
-Wire Wire Line
-	3200 5400 3900 5400
-Connection ~ 3900 5400
-Wire Wire Line
-	3900 5400 3900 5250
-Wire Wire Line
-	3200 5500 4000 5500
-Connection ~ 4000 5500
-Wire Wire Line
-	4000 5500 4000 6950
-Wire Wire Line
-	3200 5600 4100 5600
-Connection ~ 4100 5600
-Wire Wire Line
-	4100 5600 4100 5050
-Wire Wire Line
-	3200 5700 4200 5700
-Connection ~ 4200 5700
-Wire Wire Line
-	4200 5700 4200 4950
-Wire Wire Line
-	3200 5800 4300 5800
-Connection ~ 4300 5800
-Wire Wire Line
-	4300 5800 4300 6650
-Wire Wire Line
-	3200 5900 4400 5900
-Connection ~ 4400 5900
-Wire Wire Line
-	4400 5900 4400 4750
-Wire Wire Line
-	4500 6000 3200 6000
-Connection ~ 4500 6000
-Wire Wire Line
-	4500 6000 4500 6450
-Wire Wire Line
-	3200 6100 4600 6100
-Connection ~ 4600 6100
-Wire Wire Line
-	4600 6100 4600 6350
 Text GLabel 3200 4600 2    50   Output ~ 0
 D1EN
 Text GLabel 3200 4700 2    50   Output ~ 0
@@ -589,92 +142,93 @@ Text GLabel 3200 4800 2    50   Output ~ 0
 D3EN
 Text GLabel 3200 4900 2    50   Output ~ 0
 D4EN
+Text GLabel 3200 4300 2    50   Output ~ 0
+LOWPOWER
+Text GLabel 3200 3700 2    50   Input ~ 0
+CORRECT
 $Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9A5974
-P 7900 2200
-F 0 "Q?" H 8106 2246 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 2155 50  0000 L CNN
-F 2 "" H 8100 2300 50  0001 C CNN
-F 3 "~" H 7900 2200 50  0001 C CNN
-	1    7900 2200
+L The~Gelsoft~Bomb~Project:HDSP-B08G U?
+U 1 1 5D82E498
+P 8350 5550
+F 0 "U?" H 8350 6217 50  0000 C CNN
+F 1 "HDSP-B08G" H 8350 6126 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:HDSP-B08G" H 8350 4950 50  0001 C CNN
+F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/CC56-12CGKWA(Ver.8A).pdf" H 7920 5580 50  0001 C CNN
+	1    8350 5550
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9A6BEA
-P 7900 2750
-F 0 "Q?" H 8106 2796 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 2705 50  0000 L CNN
-F 2 "" H 8100 2850 50  0001 C CNN
-F 3 "~" H 7900 2750 50  0001 C CNN
-	1    7900 2750
+L power:Earth #PWR?
+U 1 1 5D74EEF4
+P 4600 4900
+F 0 "#PWR?" H 4600 4650 50  0001 C CNN
+F 1 "Earth" H 4600 4750 50  0001 C CNN
+F 2 "" H 4600 4900 50  0001 C CNN
+F 3 "~" H 4600 4900 50  0001 C CNN
+	1    4600 4900
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4600 4900 4650 4900
+Wire Wire Line
+	6450 5500 6450 5950
+Wire Wire Line
+	6450 5950 7250 5950
+Wire Wire Line
+	5900 5500 6450 5500
+Wire Wire Line
+	5900 5400 6500 5400
+Wire Wire Line
+	6500 5850 6500 5400
+Wire Wire Line
+	7250 5850 6500 5850
+Wire Wire Line
+	6550 5750 7250 5750
+Wire Wire Line
+	6550 5300 6550 5750
+Wire Wire Line
+	5900 5300 6550 5300
+Wire Wire Line
+	6600 5200 5900 5200
+Wire Wire Line
+	6600 5650 6600 5200
+Wire Wire Line
+	7250 5650 6600 5650
+Wire Wire Line
+	6650 5550 7250 5550
+Wire Wire Line
+	6650 5100 6650 5550
+Wire Wire Line
+	5900 5100 6650 5100
+Wire Wire Line
+	6700 5000 5900 5000
+Wire Wire Line
+	6700 5450 6700 5000
+Wire Wire Line
+	7250 5450 6700 5450
+Wire Wire Line
+	6750 5350 7250 5350
+Wire Wire Line
+	6750 4900 6750 5350
+Wire Wire Line
+	5900 4900 6750 4900
+Wire Wire Line
+	6800 4800 5900 4800
+Wire Wire Line
+	6800 5250 6800 4800
+Wire Wire Line
+	7250 5250 6800 5250
+Text GLabel 4650 4800 0    50   Input ~ 0
+5v
 $Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9A73F3
-P 7900 3300
-F 0 "Q?" H 8106 3346 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 3255 50  0000 L CNN
-F 2 "" H 8100 3400 50  0001 C CNN
-F 3 "~" H 7900 3300 50  0001 C CNN
-	1    7900 3300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9ABE32
-P 7900 3850
-F 0 "Q?" H 8106 3896 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 3805 50  0000 L CNN
-F 2 "" H 8100 3950 50  0001 C CNN
-F 3 "~" H 7900 3850 50  0001 C CNN
-	1    7900 3850
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9AC61A
-P 7900 4400
-F 0 "Q?" H 8106 4446 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 4355 50  0000 L CNN
-F 2 "" H 8100 4500 50  0001 C CNN
-F 3 "~" H 7900 4400 50  0001 C CNN
-	1    7900 4400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9AF813
-P 7900 4950
-F 0 "Q?" H 8106 4996 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 4905 50  0000 L CNN
-F 2 "" H 8100 5050 50  0001 C CNN
-F 3 "~" H 7900 4950 50  0001 C CNN
-	1    7900 4950
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9B0E64
-P 7900 5500
-F 0 "Q?" H 8106 5546 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 5455 50  0000 L CNN
-F 2 "" H 8100 5600 50  0001 C CNN
-F 3 "~" H 7900 5500 50  0001 C CNN
-	1    7900 5500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Q_NMOS_GSD Q?
-U 1 1 5D9B319A
-P 7900 1650
-F 0 "Q?" H 8106 1696 50  0000 L CNN
-F 1 "Q_NMOS_GSD" H 8106 1605 50  0000 L CNN
-F 2 "" H 8100 1750 50  0001 C CNN
-F 3 "~" H 7900 1650 50  0001 C CNN
-	1    7900 1650
+L The~Gelsoft~Bomb~Project:HT16K33_SOP28 U?
+U 1 1 5D745634
+P 5450 4400
+F 0 "U?" H 5275 4265 50  0000 C CNN
+F 1 "HT16K33_SOP28" H 5275 4174 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:SOP-28_7.5x15.4mm_P1.27mm" H 5300 2350 50  0001 C CNN
+F 3 "" H 5350 4100 50  0001 C CNN
+	1    5450 4400
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
