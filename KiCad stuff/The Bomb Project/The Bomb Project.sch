@@ -17,126 +17,115 @@ $EndDescr
 $Comp
 L Connector_Generic:Conn_02x03_Odd_Even J?
 U 1 1 5D7346A6
-P 1650 4400
-F 0 "J?" H 1650 4600 50  0000 R CNN
-F 1 "ISP" H 1850 4600 50  0000 R CNN
-F 2 "" H 1650 4400 50  0001 C CNN
-F 3 "~" H 1650 4400 50  0001 C CNN
-	1    1650 4400
+P 1600 4600
+F 0 "J?" H 1600 4800 50  0000 R CNN
+F 1 "ISP" H 1800 4800 50  0000 R CNN
+F 2 "" H 1600 4600 50  0001 C CNN
+F 3 "~" H 1600 4600 50  0001 C CNN
+	1    1600 4600
 	1    0    0    -1  
 $EndComp
-Text GLabel 1450 4300 0    50   Output ~ 0
+Text GLabel 1400 4500 0    50   Output ~ 0
 5v
-Text GLabel 1450 4400 0    50   Output ~ 0
+Text GLabel 1400 4600 0    50   Output ~ 0
 MOSI
-Text GLabel 1950 4300 2    50   Input ~ 0
+Text GLabel 1900 4500 2    50   Input ~ 0
 MISO
-Text GLabel 1950 4400 2    50   Output ~ 0
+Text GLabel 1900 4600 2    50   Output ~ 0
 SCK
-Text GLabel 1950 4500 2    50   Output ~ 0
+Text GLabel 1900 4700 2    50   Output ~ 0
 RESET
-Text GLabel 3100 2300 1    50   Input ~ 0
+Text GLabel 3100 3100 1    50   Input ~ 0
 5v
 $Comp
 L power:Earth #PWR?
 U 1 1 5D74824F
-P 1450 4500
-F 0 "#PWR?" H 1450 4250 50  0001 C CNN
-F 1 "Earth" H 1450 4350 50  0001 C CNN
-F 2 "" H 1450 4500 50  0001 C CNN
-F 3 "~" H 1450 4500 50  0001 C CNN
-	1    1450 4500
+P 1400 4700
+F 0 "#PWR?" H 1400 4450 50  0001 C CNN
+F 1 "Earth" H 1400 4550 50  0001 C CNN
+F 2 "" H 1400 4700 50  0001 C CNN
+F 3 "~" H 1400 4700 50  0001 C CNN
+	1    1400 4700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:Earth #PWR?
 U 1 1 5D748395
-P 3100 5300
-F 0 "#PWR?" H 3100 5050 50  0001 C CNN
-F 1 "Earth" H 3100 5150 50  0001 C CNN
-F 2 "" H 3100 5300 50  0001 C CNN
-F 3 "~" H 3100 5300 50  0001 C CNN
-	1    3100 5300
+P 3100 4900
+F 0 "#PWR?" H 3100 4650 50  0001 C CNN
+F 1 "Earth" H 3100 4750 50  0001 C CNN
+F 2 "" H 3100 4900 50  0001 C CNN
+F 3 "~" H 3100 4900 50  0001 C CNN
+	1    3100 4900
 	1    0    0    -1  
 $EndComp
 $Comp
 L Regulator_Linear:L7805 U?
 U 1 1 5D74AD90
-P 1700 3100
-F 0 "U?" H 1700 3342 50  0000 C CNN
-F 1 "L7805" H 1700 3251 50  0000 C CNN
-F 2 "" H 1725 2950 50  0001 L CIN
-F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 1700 3050 50  0001 C CNN
-	1    1700 3100
+P 1650 3300
+F 0 "U?" H 1650 3542 50  0000 C CNN
+F 1 "L7805" H 1650 3451 50  0000 C CNN
+F 2 "" H 1675 3150 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 1650 3250 50  0001 C CNN
+	1    1650 3300
 	1    0    0    -1  
 $EndComp
-Text GLabel 1400 3100 0    50   Input ~ 0
+Text GLabel 1350 3300 0    50   Input ~ 0
 VIN
-Text GLabel 2000 3100 2    50   Output ~ 0
+Text GLabel 1950 3300 2    50   Output ~ 0
 5v
 $Comp
 L power:Earth #PWR?
 U 1 1 5D74BAAF
-P 1700 3400
-F 0 "#PWR?" H 1700 3150 50  0001 C CNN
-F 1 "Earth" H 1700 3250 50  0001 C CNN
-F 2 "" H 1700 3400 50  0001 C CNN
-F 3 "~" H 1700 3400 50  0001 C CNN
-	1    1700 3400
+P 1650 3600
+F 0 "#PWR?" H 1650 3350 50  0001 C CNN
+F 1 "Earth" H 1650 3450 50  0001 C CNN
+F 2 "" H 1650 3600 50  0001 C CNN
+F 3 "~" H 1650 3600 50  0001 C CNN
+	1    1650 3600
 	1    0    0    -1  
 $EndComp
-Text GLabel 3700 3000 2    50   Output ~ 0
+Text GLabel 3700 3900 2    50   Output ~ 0
 MISO
-Text GLabel 3700 4100 2    50   Input ~ 0
+Text GLabel 3700 4600 2    50   Input ~ 0
 RESET
-Text GLabel 3700 3100 2    50   Input ~ 0
+Text GLabel 3700 3800 2    50   Input ~ 0
 SCK
-Text GLabel 3700 2700 2    50   Input ~ 0
+Text GLabel 3700 3500 2    50   Input ~ 0
 STRIKE
-Text GLabel 3700 2800 2    50   Output ~ 0
+Text GLabel 3700 3600 2    50   Output ~ 0
 DISARM
-Text GLabel 3700 2900 2    50   Input ~ 0
+Text GLabel 3700 4000 2    50   Input ~ 0
 MOSI
 $Comp
 L Device:Buzzer BZ?
 U 1 1 5D77FD04
-P 1650 3800
-F 0 "BZ?" H 1802 3829 50  0000 L CNN
-F 1 "Buzzer" H 1802 3738 50  0000 L CNN
-F 2 "" V 1625 3900 50  0001 C CNN
-F 3 "~" V 1625 3900 50  0001 C CNN
-	1    1650 3800
+P 1600 4000
+F 0 "BZ?" H 1752 4029 50  0000 L CNN
+F 1 "Buzzer" H 1752 3938 50  0000 L CNN
+F 2 "" V 1575 4100 50  0001 C CNN
+F 3 "~" V 1575 4100 50  0001 C CNN
+	1    1600 4000
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:Earth #PWR?
 U 1 1 5D780156
-P 1550 3900
-F 0 "#PWR?" H 1550 3650 50  0001 C CNN
-F 1 "Earth" H 1550 3750 50  0001 C CNN
-F 2 "" H 1550 3900 50  0001 C CNN
-F 3 "~" H 1550 3900 50  0001 C CNN
-	1    1550 3900
+P 1500 4100
+F 0 "#PWR?" H 1500 3850 50  0001 C CNN
+F 1 "Earth" H 1500 3950 50  0001 C CNN
+F 2 "" H 1500 4100 50  0001 C CNN
+F 3 "~" H 1500 4100 50  0001 C CNN
+	1    1500 4100
 	1    0    0    -1  
 $EndComp
-Text GLabel 1550 3700 0    50   Input ~ 0
-BUZZER\MISO
-$Comp
-L MCU_Microchip_ATmega:ATmega328P-PU U?
-U 1 1 5D738683
-P 3100 3800
-F 0 "U?" H 2700 5250 50  0000 R CNN
-F 1 "ATmega328P-PU" H 3900 5250 50  0000 R CNN
-F 2 "Package_DIP:DIP-28_W7.62mm" H 3100 3800 50  0001 C CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 3100 3800 50  0001 C CNN
-	1    3100 3800
-	1    0    0    -1  
-$EndComp
-Text GLabel 3700 3300 2    50   Output ~ 0
+Text GLabel 1500 3900 0    50   Input ~ 0
 BUZZER
-Text GLabel 3700 3200 2    50   Output ~ 0
+Text GLabel 3700 4100 2    50   Output ~ 0
+BUZZER
+Text GLabel 3700 3700 2    50   Output ~ 0
 LOWPOWER
-Text GLabel 3700 2600 2    50   Input ~ 0
+Text GLabel 3700 3400 2    50   Input ~ 0
 CORRECT
 $Comp
 L The~Gelsoft~Bomb~Project:HDSP-B09G U?
@@ -278,4 +267,15 @@ Wire Wire Line
 	4650 3900 4650 4500
 Wire Wire Line
 	4650 4500 3700 4500
+$Comp
+L MCU_Microchip_ATtiny:ATtiny24A-PU U?
+U 1 1 5D807087
+P 3100 4000
+F 0 "U?" H 2700 4850 50  0000 R CNN
+F 1 "ATtiny24A-PU" H 3700 4850 50  0000 R CNN
+F 2 "Package_DIP:DIP-14_W7.62mm" H 3100 4000 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc8183.pdf" H 3100 4000 50  0001 C CNN
+	1    3100 4000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
