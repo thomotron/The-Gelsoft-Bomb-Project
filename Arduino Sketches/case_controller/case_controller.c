@@ -32,6 +32,7 @@
 #define STRIKE_PIN  1
 
 // Function prototypes
+void init();
 void onCorrect();
 void onStrike();
 void enableInterrupts();
@@ -40,6 +41,8 @@ void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
 void writeDigit(int place, int value, bool dp);
 void writeDigits(int values[], bool decimalPoints[]);
+void writeBit(bool bit);
+void writeByteMSB(unsigned char byte);
 
 // Display font
 const unsigned char digits[] = {
