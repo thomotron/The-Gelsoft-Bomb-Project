@@ -31,6 +31,13 @@
 #define STRIKE_PORT PORTA
 #define STRIKE_PIN  1
 
+// Digit struct
+typedef struct digit
+{
+    int num;
+    bool dp;
+} digit;
+
 // Function prototypes
 void init();
 void onCorrect();
@@ -40,7 +47,7 @@ void disableInterrupts();
 void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
 void writeDigit(int place, int value, bool dp);
-void writeDigits(int values[], bool decimalPoints[]);
+void writeDigits(digit digits[]);
 void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
 
@@ -63,6 +70,7 @@ bool running = true;
 volatile bool solved = false;
 volatile int strikes = 0;
 const int maxStrikes = 3;
+int timeRemaining = 600; // 5-minute countdown
 
 // Interrupt states
 bool correctPinLast;
@@ -116,6 +124,21 @@ void main() {
             // Break out and commit not run anymore
             return;
         }
+
+        // Split the time remaining down into individual digits
+        int minutes = timeRemaining / 60;
+        int seconds = timeRemaining;
+        digit d1 = { minutes / 10, false }; // 10 Minutes
+        digit d2 = { minutes % 10, true  }; // 1 Minute
+        digit d3 = { seconds / 10, true  }; // 10 Seconds
+        digit d4 = { seconds % 10, false }; // 1 Second
+
+        // Write the digits to the display
+        digit displayDigits[] = {d1, d2, d3, d4};
+        writeDigits(displayDigits);
+
+        // Wait 1000ms
+        _delay_ms(1000);
     }
 }
 
@@ -183,13 +206,13 @@ void writeDigit(int place, int value, bool dp)
 
 // Writes a series of digits to a multi-digit 7-seg display
 //   values: Array of values to write
-void writeDigits(int values[], bool decimalPoints[])
+void writeDigits(digit digits[])
 {
     // Iterate over values array
     for (int i = 0; i < 4; i++)
     {
         // Write value to the current place
-        writeDigit(i, values[i], decimalPoints[i]);
+        writeDigit(i, digits[i].num, digits[i].dp);
     }
 }
 
