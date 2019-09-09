@@ -1,4 +1,5 @@
 MCU=attiny24
+ISP=usbtiny
 
 all: case_controller
 
@@ -14,3 +15,11 @@ case_controller: case_controller.c
 
 	# HEXify
 	avr-objcopy -j .text -j .data -O ihex case_controller.elf case_controller.hex
+
+flash: case_controller
+	# Flash
+	avrdude -p $(MCU) -c $(ISP) -U flash:w:case_controller.hex
+
+fuse:
+	# Burn fuses
+	avrdude -p $(MCU) -c $(ISP) -U lfuse:w:0xE2:m -U hfuse:w:0xDF:m -U efuse:w:0xFF:m
