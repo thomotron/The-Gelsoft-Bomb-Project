@@ -25,6 +25,12 @@
 #define LOAD_PORT PORTB
 #define LOAD_PIN 2
 
+// Define some macros for the interrupt pins
+#define CORRECT_PORT PORTA
+#define CORRECT_PIN  0
+#define STRIKE_PORT PORTA
+#define STRIKE_PIN  1
+
 // Function prototypes
 void onCorrect();
 void onStrike();
@@ -54,6 +60,26 @@ bool running = true;
 volatile bool solved = false;
 volatile int strikes = 0;
 const int maxStrikes = 3;
+
+// Interrupt states
+bool correctPinLast;
+bool strikePinLast;
+
+// Define interrupt handler
+ISR(PCINT0_vect)
+{
+    // Get current interrupt pin states
+    bool correctPin = (CORRECT_PORT >> CORRECT_PIN) & 1;
+    bool strikePin = (STRIKE_PORT >> STRIKE_PIN) & 1;
+
+    // Compare and run handlers
+    if (correctPinLast != correctPin) onCorrect();
+    if (strikePinLast != strikePin) onStrike();
+
+    // Shift states to history for the next run
+    correctPinLast = correctPin;
+    strikePinLast = strikePin;
+}
 
 void init() {
     // Enable pullups by setting MCUCR[6] (PUD) to 0 (~ is 1s complement, so NOT)
