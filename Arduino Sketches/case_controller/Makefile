@@ -2,6 +2,9 @@ MCU=attiny24
 
 all: case_controller
 
+clean:
+	rm *.o *.elf *.hex
+
 case_controller: case_controller.c
 	# Compile
 	avr-gcc -mmcu=$(MCU) -c case_controller.c
