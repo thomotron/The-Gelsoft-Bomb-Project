@@ -17,15 +17,15 @@
 #include <util/delay.h>
 #include <stdbool.h>
 
-bool running = true;
-volatile bool solved = false;
-volatile int strikes = 0;
-const int maxStrikes = 3;
+// Define some macros for the DIN, CLK, and LOAD connections to the MAX2719
+#define DIN_PORT PORTB
+#define DIN_PIN  0
+#define CLK_PORT PORTB
+#define CLK_PIN  1
+#define LOAD_PORT PORTB
+#define LOAD_PIN 2
 
-volatile unsigned long onStrikeLast = 0;
-volatile unsigned long onCorrectLast = 0;
-const unsigned int bounceDelay = 200;
-
+// Function prototypes
 void onCorrect();
 void onStrike();
 void enableInterrupts();
@@ -34,6 +34,26 @@ void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
 void writeDigit(int place, int value, bool dp);
 void writeDigits(int values[], bool decimalPoints[]);
+
+// Display font
+const unsigned char digits[] = {
+    0b1111110,
+    0b0110000,
+    0b1101101,
+    0b1111001,
+    0b0110011,
+    0b1011010,
+    0b1011111,
+    0b1110000,
+    0b1111111,
+    0b1110011
+};
+
+// State variables
+bool running = true;
+volatile bool solved = false;
+volatile int strikes = 0;
+const int maxStrikes = 3;
 
 void init() {
     // Enable pullups by setting MCUCR[6] (PUD) to 0 (~ is 1s complement, so NOT)
@@ -107,43 +127,18 @@ void disableInterrupt(int interrupt)
 //   dp: Whether to enable the decimal place indicator
 void writeDigit(int place, int value, bool dp)
 {
-    char digits[] = {
-        0b11111100,
-        0b01100000,
-        0b11011010,
-        0b11110010,
-        0b01100110,
-        0b10110100,
-        0b10111110,
-        0b11100000,
-        0b11111110,
-        0b11100110
-    };
+    // Write which digit we are updating
+    // Only write the last four bits, since there are only 14 commands
+    writeByteMSB(value & 0b00001111);
 
-    // Iterate the remaining 7 digits
-    for (int i = 0; i < 7; i++)
-    {
-        // Get the individual bit from the port and the digit
-        unsigned char portBit = PORTB & 0b00000001;
-        unsigned char digitBit = (digits[value] >> i) & 0b00000001;
+    // Set the decimal point
+    writeBit(dp);
 
-        // Check if they differ
-        if (portBit ^ digitBit)
-        {
-            // If the port is set, clear it
-            if (portBit) PORTB &= ~0b00000001;
-            // Otherwise, set it
-            else PORTB |= 0b00000001;
-        }
-
-        // Pulse the clock
-        PORTB |= (1 << 1);
-        PORTB &= ~(1 << 1);
-    }
+    writeByteMSB(digits[value]);
 
     // Pulse LOAD to write the MAX7219's shift register to the display
-    PORTB |= (1 << 2);
-    PORTB &= ~(1 << 2);
+    LOAD_PORT |= (1 << LOAD_PIN);
+    LOAD_PORT &= ~(1 << LOAD_PIN);
 }
 
 // Writes a series of digits to a multi-digit 7-seg display
@@ -155,5 +150,30 @@ void writeDigits(int values[], bool decimalPoints[])
     {
         // Write value to the current place
         writeDigit(i, values[i], decimalPoints[i]);
+    }
+}
+
+// Writes a single bit to the given port on the given pin
+//   bit: Bit to write
+void writeBit(bool bit)
+{
+    // Set or clear the pin, depending on the bit
+    if (bit) DIN_PORT |= bit << DIN_PIN;
+    else DIN_PORT &= ~(bit << DIN_PIN);
+
+    // Pulse the clock
+    CLK_PORT |= 1 << CLK_PIN;
+    CLK_PORT &= ~(1 << CLK_PIN);
+}
+
+// Writes a single byte to the given port on the given pin (MSB-first)
+//   byte: Byte to write
+void writeByteMSB(unsigned char byte)
+{
+    // Iterate from MSB to LSB
+    for (int i = 7; i >= 0; i--)
+    {
+        // Mask the relevant bit and write it
+        writeBit(byte & (1 << i));
     }
 }
