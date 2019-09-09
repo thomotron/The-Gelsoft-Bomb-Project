@@ -84,7 +84,8 @@ ISR(PCINT0_vect)
     strikePinLast = strikePin;
 }
 
-void init() {
+void init()
+{
     // Enable pullups by setting MCUCR[6] (PUD) to 0 (~ is 1s complement, so NOT)
     MCUCR &= ~(1 << 6);
 
