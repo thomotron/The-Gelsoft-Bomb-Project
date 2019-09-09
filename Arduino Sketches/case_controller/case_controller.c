@@ -92,16 +92,26 @@ void init() {
 }
 
 void main() {
-    init();
-
+    // Don't do anything if we aren't runnning
     if (!running) return;
 
-    // Disable interrupts if solved or dead
-    if (solved || strikes == maxStrikes)
+    // Initialise everything
+    init();
+
+    // Enter the Main Run Loop (MRL) -- Advanced military tech right here
+    while (true)
     {
-        disableInterrupt(0);
-        disableInterrupt(1);
-        running = false;
+        // Disable interrupts if solved or detonated
+        if (solved || strikes == maxStrikes)
+        {
+            // Disable interrupts and clear running flag
+            disableInterrupt(0);
+            disableInterrupt(1);
+            running = false;
+
+            // Break out and commit not run anymore
+            return;
+        }
     }
 }
 
