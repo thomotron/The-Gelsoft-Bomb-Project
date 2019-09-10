@@ -72,9 +72,6 @@ ISR(PCINT0_vect)
 
 void init()
 {
-    // Enable pullups by setting MCUCR[6] (PUD) to 0 (~ is 1s complement, so NOT)
-    MCUCR &= ~(1 << 6);
-
     // Set up interrupt registers and enable PCINT0 and PCINT1
     enableInterrupts();
     enableInterrupt(0);
