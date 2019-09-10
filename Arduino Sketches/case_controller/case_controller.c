@@ -73,6 +73,10 @@ ISR(PCINT0_vect)
 
 void init()
 {
+    // Set port I/O directions
+    DDRA |= 0b11000000;
+    DDRB |= 0b00000000;
+
     // Set up interrupt registers and enable PCINT0 and PCINT1
     enableInterrupts();
     enableInterrupt(0);
