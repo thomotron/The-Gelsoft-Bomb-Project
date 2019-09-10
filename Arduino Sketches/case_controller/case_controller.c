@@ -32,6 +32,10 @@
 #define STRIKE_PORT PORTA
 #define STRIKE_PIN  1
 
+// Define some macros for other pins
+#define BUZZER_PORT PORTA
+#define BUZZER_PIN 7
+
 // Function prototypes
 void init();
 void onCorrect();
@@ -99,6 +103,8 @@ int main() {
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
     while (true)
     {
+        bool buzzed = false;
+
         // Decrement time remaining by 1 second if we're still running
         if (running) timeRemaining--;
 
@@ -109,6 +115,19 @@ int main() {
             // Write remaining time to the display and clear the blanked flag
             displayTimeRemaining();
             displayBlankedLast = false;
+
+            // Beep the buzzer if running
+            if (running && timeRemaining >= 0)
+            {
+                // Write the pin high
+                BUZZER_PORT |= 1 << BUZZER_PIN;
+
+                _delay_ms(50);
+                buzzed = true;
+
+                // Write the pin low
+                BUZZER_PORT &= ~(1 << BUZZER_PIN);
+            }
         }
         else
         {
@@ -136,8 +155,8 @@ int main() {
             running = false;
         }
 
-        // Wait 1000ms
-        _delay_ms(1000);
+        if (buzzed) _delay_ms(950); // Wait 950ms, shorter due to buzzer delay
+        else _delay_ms(1000); // Wait 1000ms
     }
 }
 
