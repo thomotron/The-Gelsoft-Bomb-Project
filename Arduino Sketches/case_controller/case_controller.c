@@ -85,10 +85,10 @@ void init()
     // Initialise the LED display
     MAX7219_Init();
 
+    // Test the display for one second
     MAX7219_DisplayTestStart();
-    _delay_ms(2000);
+    _delay_ms(1000);
     MAX7219_DisplayTestStop();
-
     MAX7219_Clear();
 }
 
