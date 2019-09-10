@@ -48,7 +48,8 @@ bool running = true;
 volatile bool solved = false;
 volatile int strikes = 0;
 const int maxStrikes = 3;
-int timeRemaining = 600; // 5-minute countdown
+int timeRemaining = 30; // 5-minute countdown
+bool displayBlankedLast = false;
 
 // Interrupt states
 bool correctPinLast;
@@ -88,20 +89,29 @@ void init()
 }
 
 int main() {
-    // Don't do anything if we aren't runnning
-    if (!running) return 1;
-
     // Initialise everything
     init();
 
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
     while (true)
     {
-        // Decrement time remaining by 1 second
-        timeRemaining--;
+        // Decrement time remaining by 1 second if we're still running
+        if (running) timeRemaining--;
 
-        // Display the time remaining
-        displayTimeRemaining();
+        // Do some funky display magic based on the bomb state
+        // Check if we should remain solid
+        if (running || (!running && timeRemaining < 0) || displayBlankedLast)
+        {
+            // Write remaining time to the display and clear the blanked flag
+            displayTimeRemaining();
+            displayBlankedLast = false;
+        }
+        else
+        {
+            // Blank the display and set the blanked flag
+            MAX7219_Clear();
+            displayBlankedLast = true;
+        }
 
         // Check if we should detonate
         if (timeRemaining < 0 || strikes == maxStrikes)
@@ -112,8 +122,6 @@ int main() {
             running = false;
 
             // TODO: Detonate
-
-            return 1;
         }
         // Check if we've been solved
         else if (solved)
@@ -122,9 +130,6 @@ int main() {
             disableInterrupt(0);
             disableInterrupt(1);
             running = false;
-
-            // Break out and commit not run anymore
-            return 1;
         }
 
         // Wait 1000ms
