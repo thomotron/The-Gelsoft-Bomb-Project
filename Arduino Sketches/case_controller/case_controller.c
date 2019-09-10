@@ -114,7 +114,7 @@ int main() {
         }
 
         // Check if we should detonate
-        if (timeRemaining < 0 || strikes == maxStrikes)
+        if (running && timeRemaining < 0 || strikes == maxStrikes)
         {
             // Disable interrupts and clear running flag
             disableInterrupt(0);
@@ -124,7 +124,7 @@ int main() {
             // TODO: Detonate
         }
         // Check if we've been solved
-        else if (solved)
+        else if (running && solved)
         {
             // Disable interrupts and clear running flag
             disableInterrupt(0);
