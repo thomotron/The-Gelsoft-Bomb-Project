@@ -16,6 +16,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <stdbool.h>
+#include "max7219.c"
 
 // Define some macros for the DIN, CLK, and LOAD connections to the MAX2719
 #define DIN_PORT PORTB
@@ -31,13 +32,6 @@
 #define STRIKE_PORT PORTA
 #define STRIKE_PIN  1
 
-// Digit struct
-typedef struct digit
-{
-    int num;
-    bool dp;
-} digit;
-
 // Function prototypes
 void init();
 void onCorrect();
@@ -46,24 +40,8 @@ void enableInterrupts();
 void disableInterrupts();
 void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
-void writeDigit(int place, int value, bool dp);
-void writeDigits(digit digits[]);
 void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
-
-// Display font
-const unsigned char digits[] = {
-    0b1111110,
-    0b0110000,
-    0b1101101,
-    0b1111001,
-    0b0110011,
-    0b1011010,
-    0b1011111,
-    0b1110000,
-    0b1111111,
-    0b1110011
-};
 
 // State variables
 bool running = true;
@@ -101,11 +79,20 @@ void init()
     enableInterrupts();
     enableInterrupt(0);
     enableInterrupt(1);
+
+    // Initialise the LED display
+    MAX7219_Init();
+
+    MAX7219_DisplayTestStart();
+    _delay_ms(2000);
+    MAX7219_DisplayTestStop();
+
+    MAX7219_Clear();
 }
 
-void main() {
+int main() {
     // Don't do anything if we aren't runnning
-    if (!running) return;
+    if (!running) return 1;
 
     // Initialise everything
     init();
@@ -113,8 +100,26 @@ void main() {
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
     while (true)
     {
-        // Disable interrupts if solved or detonated
-        if (solved || strikes == maxStrikes)
+        // Decrement time remaining by 1 second
+        timeRemaining--;
+
+        // Display the time remaining
+        displayTimeRemaining();
+
+        // Check if we should detonate
+        if (timeRemaining < 0 || strikes == maxStrikes)
+        {
+            // Disable interrupts and clear running flag
+            disableInterrupt(0);
+            disableInterrupt(1);
+            running = false;
+
+            // TODO: Detonate
+
+            return 1;
+        }
+        // Check if we've been solved
+        else if (solved)
         {
             // Disable interrupts and clear running flag
             disableInterrupt(0);
@@ -122,23 +127,33 @@ void main() {
             running = false;
 
             // Break out and commit not run anymore
-            return;
+            return 1;
         }
-
-        // Split the time remaining down into individual digits
-        int minutes = timeRemaining / 60;
-        int seconds = timeRemaining;
-        digit d1 = { minutes / 10, false }; // 10 Minutes
-        digit d2 = { minutes % 10, true  }; // 1 Minute
-        digit d3 = { seconds / 10, true  }; // 10 Seconds
-        digit d4 = { seconds % 10, false }; // 1 Second
-
-        // Write the digits to the display
-        digit displayDigits[] = {d1, d2, d3, d4};
-        writeDigits(displayDigits);
 
         // Wait 1000ms
         _delay_ms(1000);
+    }
+}
+
+void displayTimeRemaining()
+{
+    // Check if we should 'line-out' the display
+    if (timeRemaining < 0)
+    {
+        for (int i = 1; i <= 4; i++)
+        {
+            MAX7219_DisplayChar(i, '-');
+        }
+    }
+    else
+    {
+        // Split the remaining time down into digits and display them
+        int minutes = timeRemaining / 60;
+        int seconds = timeRemaining - (minutes * 60);
+        MAX7219_DisplayChar(4, (char) ((int)(minutes / 10) + 48)); // Values are offset by 48 for ASCII
+        MAX7219_DisplayChar(3, (char) ((int)(minutes % 10) + 48));
+        MAX7219_DisplayChar(2, (char) ((int)(seconds / 10) + 48));
+        MAX7219_DisplayChar(1, (char) ((int)(seconds % 10) + 48));
     }
 }
 
@@ -182,38 +197,6 @@ void disableInterrupt(int interrupt)
 {
     // Disable interrupt pin by setting PCMSK0[interrupt] to 0
     PCMSK0 &= ~(1 << interrupt);
-}
-
-// Writes a digit to a multi-digit 7-seg display
-//   place: Place to write the digit to (0-3)
-//   value: Digit value (0-9)
-//   dp: Whether to enable the decimal place indicator
-void writeDigit(int place, int value, bool dp)
-{
-    // Write which digit we are updating
-    // Only write the last four bits, since there are only 14 commands
-    writeByteMSB(value & 0b00001111);
-
-    // Set the decimal point
-    writeBit(dp);
-
-    writeByteMSB(digits[value]);
-
-    // Pulse LOAD to write the MAX7219's shift register to the display
-    LOAD_PORT |= (1 << LOAD_PIN);
-    LOAD_PORT &= ~(1 << LOAD_PIN);
-}
-
-// Writes a series of digits to a multi-digit 7-seg display
-//   values: Array of values to write
-void writeDigits(digit digits[])
-{
-    // Iterate over values array
-    for (int i = 0; i < 4; i++)
-    {
-        // Write value to the current place
-        writeDigit(i, digits[i].num, digits[i].dp);
-    }
 }
 
 // Writes a single bit to the given port on the given pin
