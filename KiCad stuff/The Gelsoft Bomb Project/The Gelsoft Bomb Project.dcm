@@ -1,5 +1,9 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 3x4_Keypad
+D 3-column 4-row 12-key numeric keypad with star (*) and pound (#) keys
+$ENDCMP
+#
 $CMP HDSP-B08G
 D 4 digit 7 segment green LED, common cathode
 K display LED 7-segment
@@ -10,6 +14,10 @@ $CMP HDSP-B09G
 D 4 digit 7 segment green LED, common cathode
 K display LED 7-segment
 F http://www.kingbright.com/attachments/file/psearch/000/00/00/CC56-12CGKWA(Ver.8A).pdf
+$ENDCMP
+#
+$CMP SUR1601B
+F https://ae01.alicdn.com/kf/HTB1vj1BmdcnBKNjSZR0q6AFqFXa9.jpg
 $ENDCMP
 #
 #End Doc Library
