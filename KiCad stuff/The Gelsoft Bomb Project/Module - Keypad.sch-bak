@@ -311,28 +311,4 @@ F 3 "~" H 8150 3200 50  0001 C CNN
 	1    8150 3200
 	1    0    0    -1  
 $EndComp
-Wire Notes Line
-	5500 4700 5300 4700
-Wire Notes Line
-	5300 5400 5500 5400
-Wire Notes Line
-	5500 4600 5300 4600
-Wire Notes Line
-	5300 4600 5300 5400
-Wire Notes Line
-	5500 4200 5300 4200
-Wire Notes Line
-	5300 4500 5500 4500
-Wire Notes Line
-	5500 3900 5300 3900
-Wire Notes Line
-	5300 3900 5300 4500
-Text Notes 5250 5100 2    50   ~ 0
-Keypad
-Text Notes 5250 4700 2    50   ~ 0
-LCD Enable
-Text Notes 5250 4100 2    50   ~ 0
-Shift Reg.
-Text Notes 5250 4400 2    50   ~ 0
-LCD Mode/LED
 $EndSCHEMATC
