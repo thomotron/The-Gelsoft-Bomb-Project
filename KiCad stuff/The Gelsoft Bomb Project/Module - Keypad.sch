@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Module - Keypad-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -80,7 +81,7 @@ U 1 1 5D86BF6C
 P 3300 5350
 F 0 "J2" H 3100 5950 50  0000 L CNN
 F 1 "Module Connector" H 3300 5950 50  0000 L CNN
-F 2 "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 3300 5350 50  0001 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x09_P1.27mm_Vertical" H 3300 5350 50  0001 C CNN
 F 3 " ~" H 3300 5350 50  0001 C CNN
 	1    3300 5350
 	1    0    0    -1  
@@ -114,7 +115,7 @@ U 1 1 5D7F550F
 P 7050 2400
 F 0 "U2" H 6800 2950 50  0000 C CNN
 F 1 "74HC595" H 7300 2950 50  0000 C CNN
-F 2 "" H 7050 2400 50  0001 C CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 7050 2400 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/sn74hc595.pdf" H 7050 2400 50  0001 C CNN
 	1    7050 2400
 	1    0    0    -1  
@@ -180,17 +181,6 @@ Wire Wire Line
 Wire Wire Line
 	8850 2000 8850 3700
 $Comp
-L Device:R_POT RV1
-U 1 1 5D81373A
-P 8150 3200
-F 0 "RV1" H 8000 3150 50  0000 C CNN
-F 1 "10k" H 8000 3250 50  0000 C CNN
-F 2 "" H 8150 3200 50  0001 C CNN
-F 3 "~" H 8150 3200 50  0001 C CNN
-	1    8150 3200
-	-1   0    0    1   
-$EndComp
-$Comp
 L power:Earth #PWR0105
 U 1 1 5D814C30
 P 8150 3350
@@ -201,8 +191,6 @@ F 3 "~" H 8150 3350 50  0001 C CNN
 	1    8150 3350
 	1    0    0    -1  
 $EndComp
-Text GLabel 8000 3200 0    50   Input ~ 0
-5v
 Wire Wire Line
 	8150 3050 8150 2900
 $Comp
@@ -211,7 +199,7 @@ U 1 1 5D8220AC
 P 7200 5000
 F 0 "U3" H 6750 5500 50  0000 L CNN
 F 1 "3x4_Keypad" H 7250 5500 50  0000 L CNN
-F 2 "" H 7050 5400 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical" H 7050 5400 50  0001 C CNN
 F 3 "" H 7050 5400 50  0001 C CNN
 	1    7200 5000
 	1    0    0    -1  
@@ -222,7 +210,7 @@ U 1 1 5D822D57
 P 8100 2350
 F 0 "U4" H 7800 2850 50  0000 C CNN
 F 1 "SUR1601B" H 8350 2850 50  0000 C CNN
-F 2 "" H 7900 2550 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 7900 2550 50  0001 C CNN
 F 3 "https://ae01.alicdn.com/kf/HTB1vj1BmdcnBKNjSZR0q6AFqFXa9.jpg" H 7900 2550 50  0001 C CNN
 	1    8100 2350
 	1    0    0    -1  
@@ -312,4 +300,15 @@ Wire Wire Line
 	6150 2000 6150 3950
 Wire Wire Line
 	6150 3950 5600 3950
+$Comp
+L Device:R R1
+U 1 1 5DA19ACD
+P 8150 3200
+F 0 "R1" H 8220 3246 50  0000 L CNN
+F 1 "10k" H 8220 3155 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0614_L14.3mm_D5.7mm_P20.32mm_Horizontal" V 8080 3200 50  0001 C CNN
+F 3 "~" H 8150 3200 50  0001 C CNN
+	1    8150 3200
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
