@@ -110,11 +110,53 @@ void cmd_read_ram()
     // Read-only
 }
 
+// Writes a value to the shift register MSB-first
 void write_shift_register(unsigned char value)
 {
     // Shift in the value MSB-first
     for (unsigned char mask = 0b10000000; mask > 0; mask >>= 1)
     {
-        break;
+        // Write the bit to the data line
+        if (value & mask)
+            // Set
+            shift_register.data.port |= (1 << shift_register.data.pin);
+        else
+            // Clear
+            shift_register.data.port &= ~(1 << shift_register.data.pin);
+
+        // Pulse the shift clock
+        shift_register.shift_clock.port |= (1 << shift_register.shift_clock.pin);
+        shift_register.shift_clock.port &= ~(1 << shift_register.shift_clock.pin);
     }
+
+    // Pulse the register clock
+    shift_register.reg_clock.port |= (1 << shift_register.reg_clock.pin);
+    shift_register.reg_clock.port &= ~(1 << shift_register.reg_clock.pin);
+}
+
+// Writes the given RS, RW, and register values to the LCD
+void write_lcd(bool rs, bool rw, unsigned char value)
+{
+    // Apply RS
+    if (rs)
+        // Set
+        lcd.rs.port |= (1 << lcd.rs.pin);
+    else
+        // Reset
+        lcd.rs.port &= ~(1 << lcd.rs.pin);
+
+    // Apply RW
+    if (rw)
+        // Set
+        lcd.rw.port |= (1 << lcd.rw.pin);
+    else
+        // Reset
+        lcd.rw.port &= ~(1 << lcd.rw.pin);
+
+    // Write out the register value
+    write_shift_register(value);
+
+    // Pulse the clock
+    lcd.enable.port |= (1 << lcd.enable.pin);
+    lcd.enable.port &= (1 << lcd.enable.pin);
 }
