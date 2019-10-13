@@ -205,14 +205,14 @@ F 3 "" H 7050 5400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L The~Gelsoft~Bomb~Project:SUR1601B U4
+L The~Gelsoft~Bomb~Project:MC11605A6W7-BNMLW U4
 U 1 1 5D822D57
-P 8100 2350
-F 0 "U4" H 7800 2850 50  0000 C CNN
-F 1 "SUR1601B" H 8350 2850 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 7900 2550 50  0001 C CNN
-F 3 "https://ae01.alicdn.com/kf/HTB1vj1BmdcnBKNjSZR0q6AFqFXa9.jpg" H 7900 2550 50  0001 C CNN
-	1    8100 2350
+P 8150 1900
+F 0 "U4" H 7800 1950 50  0000 C CNN
+F 1 "MC11605A6W7-BNMLW" H 8600 1950 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x16_P2.54mm_Vertical" H 7950 2100 50  0001 C CNN
+F 3 "https://ae01.alicdn.com/kf/HTB1vj1BmdcnBKNjSZR0q6AFqFXa9.jpg" H 7950 2100 50  0001 C CNN
+	1    8150 1900
 	1    0    0    -1  
 $EndComp
 $Comp
