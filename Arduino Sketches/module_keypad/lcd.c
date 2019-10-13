@@ -42,31 +42,31 @@ void init_lcd(portpin enable, portpin rw, portpin rs, portpin backlight)
 }
 
 // Clears the LCD
-void cmd_clear()
+void _cmd_clear()
 {
     write_lcd(false, false, 0b00000001);
 }
 
 // Resets the cursor position to the first character space
-void cmd_home()
+void _cmd_home()
 {
     write_lcd(false, false, 0b00000010);
 }
 
 // Sets the direction the cursor and display will move
-void cmd_entry_mode(bool increment, bool shift_display)
+void _cmd_entry_mode(bool increment, bool shift_display)
 {
     write_lcd(false, false, 0b00000100 | (increment << 1) | shift_display);
 }
 
 // Toggles the display, cursor, and cursor blink
-void cmd_display_control(bool display_toggle, bool cursor_toggle, bool blink_toggle)
+void _cmd_display_control(bool display_toggle, bool cursor_toggle, bool blink_toggle)
 {
     write_lcd(false, false, 0b00001000 | (display_toggle << 2) | (cursor_toggle << 1) | blink_toggle);
 }
 
 // Shift the cursor or the display left or right
-void cmd_cursor_shift(bool move_cursor, bool shift_right)
+void _cmd_cursor_shift(bool move_cursor, bool shift_right)
 {
     write_lcd(false, false, 0b00010000 | (move_cursor << 3) | (shift_right << 2));
 }
@@ -74,26 +74,26 @@ void cmd_cursor_shift(bool move_cursor, bool shift_right)
 // Configures the LCD operating mode, including number of register lines to use,
 // whether to use two lines or just one, and whether to use 5x11 or 5x9 pixel
 // characters
-void cmd_function_set(bool eight_bit, bool two_line, bool high_resolution)
+void _cmd_function_set(bool eight_bit, bool two_line, bool high_resolution)
 {
     write_lcd(false, false, 0b00100000 | (eight_bit << 4) | (two_line << 3) | (high_resolution << 2));
 }
 
 // Set the CGRAM address
-void cmd_set_cgram(unsigned char address)
+void _cmd_set_cgram(unsigned char address)
 {
     write_lcd(false, false, 0b01000000 | (address & 0b00111111));
 }
 
 // Set the DDRAM address
-void cmd_set_ddram(unsigned char address)
+void _cmd_set_ddram(unsigned char address)
 {
     write_lcd(false, false, 0b10000000 | (address & 0b01111111));
 }
 
 // Write the given data to the pre-defined CG/DDRAM address
 // Set the XXRAM address prior to executing this command
-void cmd_write_ram(unsigned char data)
+void _cmd_write_ram(unsigned char data)
 {
     write_lcd(true, false, data);
 }
