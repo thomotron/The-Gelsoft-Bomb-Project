@@ -74,7 +74,7 @@ unsigned char getRandom();
 
 // Consts
 const char keypadChars[] = {'0','1','2','3','4','5','6','7','8','9','*','#'};
-const uchar sequenceLength = 7;
+#define sequenceLength 7
 
 // State variables
 bool running = true;
