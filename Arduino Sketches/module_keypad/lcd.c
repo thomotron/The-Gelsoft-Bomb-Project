@@ -2,6 +2,8 @@
 #include "lcd.h"
 #include "portpin.h"
 
+void write_lcd(bool rs, bool rw, unsigned char value);
+
 struct shift_register {
     portpin data;
     portpin shift_clock;
@@ -43,32 +45,27 @@ void init_lcd(portpin enable, portpin rw, portpin rs, portpin backlight)
 
 void cmd_clear()
 {
-    // !RS, !RW
-    // 0b00000001
+    write_lcd(false, false, 0b00000001);
 }
 
 void cmd_home()
 {
-    // !RS, !RW
-    // 0b00000010
+    write_lcd(false, false, 0b00000010);
 }
 
 void cmd_entry_mode(bool increment, bool shift_display)
 {
-    // !RS, !RW
-    // 0b000001 + increment + shift_display
+    write_lcd(false, false, 0b00000100 | (increment << 1) | shift_display);
 }
 
 void cmd_display_control(bool display_toggle, bool cursor_toggle, bool blink_toggle)
 {
-    // !RS, !RW
-    // 0b00001 + display_toggle + cursor_toggle + blink_toggle
+    write_lcd(false, false, 0b00001000 | (display_toggle << 2) | (cursor_toggle << 1) | blink_toggle);
 }
 
 void cmd_cursor_shift(bool move_cursor, bool shift_right)
 {
-    // !RS, !RW
-    // 0b0001 + move_cursor + shift_right
+    write_lcd(false, false, 0b00010000 | (move_cursor << 3) | (shift_right << 2));
 }
 
 // Configures the LCD operating mode, including number of register lines to use,
@@ -76,38 +73,22 @@ void cmd_cursor_shift(bool move_cursor, bool shift_right)
 // characters
 void cmd_function_set(bool eight_bit, bool two_line, bool high_resolution)
 {
-    // !RS, !RW
-    // 0b001 + eight_bit + two_line + high_resolution
+    write_lcd(false, false, 0b00100000 | (eight_bit << 4) | (two_line << 3) | (high_resolution << 2));
 }
 
 void cmd_set_cgram(unsigned char address)
 {
-    // !RS, !RW
-    // 0b01 + address (6b)
+    write_lcd(false, false, 0b01000000 | (address & 0b00111111));
 }
 
 void cmd_set_ddram(unsigned char address)
 {
-    // !RS, !RW
-    // 0b1 + address (7b)
-}
-
-unsigned char cmd_read_busy_and_address()
-{
-    // !RS, RW
-    // Read-only
+    write_lcd(false, false, 0b10000000 | (address & 0b01111111));
 }
 
 void cmd_write_ram(unsigned char data)
 {
-    // RS, !RW
-    // 0b + data
-}
-
-void cmd_read_ram()
-{
-    // RS, RW
-    // Read-only
+    write_lcd(true, false, data);
 }
 
 // Writes a value to the shift register MSB-first
