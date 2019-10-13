@@ -20,6 +20,7 @@ struct lcd {
 };
 struct lcd lcd;
 
+// Initialises the shift register pin data struct
 void init_shift(portpin data, portpin shift_clock, portpin reg_clock, portpin clear)
 {
     // Initialise the shift register struct
@@ -32,6 +33,7 @@ void init_shift(portpin data, portpin shift_clock, portpin reg_clock, portpin cl
     };
 }
 
+// Initialises the LCD pin data struct
 void init_lcd(portpin enable, portpin rw, portpin rs, portpin backlight)
 {
     // Initialise the LCD struct
@@ -43,26 +45,31 @@ void init_lcd(portpin enable, portpin rw, portpin rs, portpin backlight)
     };
 }
 
+// Clears the LCD
 void cmd_clear()
 {
     write_lcd(false, false, 0b00000001);
 }
 
+// Resets the cursor position to the first character space
 void cmd_home()
 {
     write_lcd(false, false, 0b00000010);
 }
 
+// Sets the direction the cursor and display will move
 void cmd_entry_mode(bool increment, bool shift_display)
 {
     write_lcd(false, false, 0b00000100 | (increment << 1) | shift_display);
 }
 
+// Toggles the display, cursor, and cursor blink
 void cmd_display_control(bool display_toggle, bool cursor_toggle, bool blink_toggle)
 {
     write_lcd(false, false, 0b00001000 | (display_toggle << 2) | (cursor_toggle << 1) | blink_toggle);
 }
 
+// Shift the cursor or the display left or right
 void cmd_cursor_shift(bool move_cursor, bool shift_right)
 {
     write_lcd(false, false, 0b00010000 | (move_cursor << 3) | (shift_right << 2));
@@ -76,16 +83,20 @@ void cmd_function_set(bool eight_bit, bool two_line, bool high_resolution)
     write_lcd(false, false, 0b00100000 | (eight_bit << 4) | (two_line << 3) | (high_resolution << 2));
 }
 
+// Set the CGRAM address
 void cmd_set_cgram(unsigned char address)
 {
     write_lcd(false, false, 0b01000000 | (address & 0b00111111));
 }
 
+// Set the DDRAM address
 void cmd_set_ddram(unsigned char address)
 {
     write_lcd(false, false, 0b10000000 | (address & 0b01111111));
 }
 
+// Write the given data to the pre-defined CG/DDRAM address
+// Set the XXRAM address prior to executing this command
 void cmd_write_ram(unsigned char data)
 {
     write_lcd(true, false, data);
