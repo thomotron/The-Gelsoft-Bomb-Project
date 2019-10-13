@@ -148,3 +148,24 @@ void write_lcd(bool rs, bool rw, unsigned char value)
     lcd.enable.port |= (1 << lcd.enable.pin);
     lcd.enable.port &= (1 << lcd.enable.pin);
 }
+
+// Writes a string to the LCD
+void lcd_write(char* string)
+{
+    for (int i = 0; string[i]; i++)
+    {
+        _cmd_write_ram(string[i]);
+    }
+}
+
+// Clears the LCD
+void lcd_clear()
+{
+    _cmd_clear();
+}
+
+// Moves the cursor back to the first character position
+void lcd_home()
+{
+    _cmd_home();
+}

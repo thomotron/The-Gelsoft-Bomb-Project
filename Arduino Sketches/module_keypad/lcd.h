@@ -17,3 +17,7 @@ void cmd_set_ddram(unsigned char address);
 void cmd_write_ram(unsigned char data);
 void write_shift_register(unsigned char value);
 void write_lcd(bool rs, bool rw, unsigned char value);
+
+void lcd_write(char* string);
+void lcd_clear();
+void lcd_home();
