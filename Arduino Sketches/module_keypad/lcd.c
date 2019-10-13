@@ -1,8 +1,4 @@
-#include <stdbool.h>
 #include "lcd.h"
-#include "portpin.h"
-
-void write_lcd(bool rs, bool rw, unsigned char value);
 
 struct shift_register {
     portpin data;
