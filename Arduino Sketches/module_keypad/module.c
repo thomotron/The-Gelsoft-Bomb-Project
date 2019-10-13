@@ -61,7 +61,7 @@
 #define KEY_ROW4_PIN 7
 
 // Define some macros for type shortcuts
-#define byte unsigned char
+#define uchar unsigned char
 
 // Function prototypes
 void init();
@@ -74,13 +74,13 @@ unsigned char getRandom();
 
 // Consts
 const char keypadChars[] = {'0','1','2','3','4','5','6','7','8','9','*','#'};
-const byte sequenceLength = 7;
+const uchar sequenceLength = 7;
 
 // State variables
 bool running = true;
 unsigned short ptrRnd = 0;
 char sequence[sequenceLength];
-byte sequenceIndex;
+uchar sequenceIndex;
 
 // Interrupt states
 bool disarmPinLast;
@@ -110,7 +110,7 @@ bool keypadState[4][3] =
         false  // Button 12
     }
 }
-byte numKeysPressed = 0;
+uchar numKeysPressed = 0;
 
 void init()
 {
@@ -190,22 +190,22 @@ void writeBit(bool bit)
     LCD_SHFT_PORT &= ~(1 << LCD_SHFT_PIN);
 }
 
-// Writes a single byte to the given port on the given pin (MSB-first)
-//   byte: Byte to write
+// Writes a single uchar to the given port on the given pin (MSB-first)
+//   byte: uchar to write
 void writeByteMSB(unsigned char byte)
 {
     // Iterate from MSB to LSB
     for (int i = 7; i >= 0; i--)
     {
         // Mask the relevant bit and write it
-        writeBit(byte & (1 << i));
+        writeBit(uchar & (1 << i));
     }
 }
 
 // Read a random value from randomvals.h, wrap when reaching the end of the table.
-byte getRandom()
+uchar getRandom()
 {
-    byte rnd = pgm_read_byte(&(random0[ptrRnd++]));
+    uchar rnd = pgm_read_byte(&(random0[ptrRnd++]));
 
     if (ptrRnd == sizeof(random0)) ptrRnd = 0;
 
@@ -263,13 +263,13 @@ bool readKeypadKey(unsigned char port, unsigned char row_pin, unsigned char colu
 }
 
 // Gets the number of keypad keys currently pressed
-byte getNumKeysPressed()
+uchar getNumKeysPressed()
 {
-    byte num;
+    uchar num;
 
-    for (byte y = 0; y < 4; y++)
+    for (uchar y = 0; y < 4; y++)
     {
-        for (byte x = 0; x < 3; x++)
+        for (uchar x = 0; x < 3; x++)
         {
             num += keypadState[y][x];
         }
