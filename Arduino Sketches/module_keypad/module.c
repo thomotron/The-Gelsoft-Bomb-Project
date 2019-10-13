@@ -24,6 +24,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 #include "randomvals.h"
+#include "lcd.h"
 
 // Define some macros for the LCD_DATA, LCD_SHFT, and LCD_STOR connections to the SN74HC595
 #define LCD_DATA_PORT PORTB
@@ -152,6 +153,8 @@ int main() {
             if (sequenceIndex == sequenceLength)
             {
                 // TODO: Mark as defused
+
+                running = false;
             }
 
             // TODO: Update the LCD
