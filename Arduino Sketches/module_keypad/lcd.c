@@ -4,7 +4,7 @@
 
 struct shift_register {
     portpin data;
-    portpin ser_clock;
+    portpin shift_clock;
     portpin reg_clock;
     portpin clear;
 };
@@ -18,13 +18,13 @@ struct lcd {
 };
 struct lcd lcd;
 
-void init_shift(portpin data, portpin ser_clock, portpin reg_clock, portpin clear)
+void init_shift(portpin data, portpin shift_clock, portpin reg_clock, portpin clear)
 {
     // Initialise the shift register struct
     shift_register = (struct shift_register)
     {
         data,
-        ser_clock,
+        shift_clock,
         reg_clock,
         clear
     };
