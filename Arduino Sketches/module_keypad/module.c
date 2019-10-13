@@ -61,16 +61,19 @@
 #define KEY_ROW4_PIN 7
 
 // Define some macros for type shortcuts
-#define uchar unsigned char
+#define byte uint8_t
 
 // Function prototypes
 void init();
-void onDisarm();
-void onLowPower();
+void onDisarm(bool disarm);
+void onLowPower(bool enabled);
 void writeBit(bool bit);
-void writeByteMSB(unsigned char byte);
 void generateSequence();
 unsigned char getRandom();
+bool getKeypadKey(char key);
+bool readKeypadKey(unsigned char port, unsigned char row_pin, unsigned char column_pin);
+void updateKeypadState();
+byte getNumKeysPressed();
 
 // Consts
 const char keypadChars[] = {'0','1','2','3','4','5','6','7','8','9','*','#'};
@@ -80,7 +83,7 @@ const char keypadChars[] = {'0','1','2','3','4','5','6','7','8','9','*','#'};
 bool running = true;
 unsigned short ptrRnd = 0;
 char sequence[sequenceLength];
-uchar sequenceIndex;
+byte sequenceIndex;
 
 // Interrupt states
 bool disarmPinLast;
@@ -109,8 +112,8 @@ bool keypadState[4][3] =
         false, // Button 11
         false  // Button 12
     }
-}
-uchar numKeysPressed = 0;
+};
+byte numKeysPressed = 0;
 
 void init()
 {
@@ -144,7 +147,7 @@ int main() {
 
         // Update the keypad state and check it against the current sequence
         updateKeypadState();
-        if (getNumKeysPressed == 1 && getKeypadKey(sequence[sequenceIndex]))
+        if (getNumKeysPressed() == 1 && getKeypadKey(sequence[sequenceIndex]))
         {
             // Move to the next item in the sequence
             sequenceIndex++;
@@ -190,22 +193,10 @@ void writeBit(bool bit)
     LCD_SHFT_PORT &= ~(1 << LCD_SHFT_PIN);
 }
 
-// Writes a single uchar to the given port on the given pin (MSB-first)
-//   byte: uchar to write
-void writeByteMSB(unsigned char byte)
-{
-    // Iterate from MSB to LSB
-    for (int i = 7; i >= 0; i--)
-    {
-        // Mask the relevant bit and write it
-        writeBit(uchar & (1 << i));
-    }
-}
-
 // Read a random value from randomvals.h, wrap when reaching the end of the table.
-uchar getRandom()
+byte getRandom()
 {
-    uchar rnd = pgm_read_byte(&(random0[ptrRnd++]));
+    byte rnd = pgm_read_byte(&(random0[ptrRnd++]));
 
     if (ptrRnd == sizeof(random0)) ptrRnd = 0;
 
@@ -253,7 +244,7 @@ bool readKeypadKey(unsigned char port, unsigned char row_pin, unsigned char colu
     port |= (1 << row_pin);
 
     // Get the pin state
-    bool state = ((port >> pin) & 1);
+    bool state = ((port >> column_pin) & 1);
 
     // Write the row low
     port &= ~(1 << row_pin);
@@ -263,13 +254,13 @@ bool readKeypadKey(unsigned char port, unsigned char row_pin, unsigned char colu
 }
 
 // Gets the number of keypad keys currently pressed
-uchar getNumKeysPressed()
+byte getNumKeysPressed()
 {
-    uchar num;
+    byte num = 0;
 
-    for (uchar y = 0; y < 4; y++)
+    for (byte y = 0; y < 4; y++)
     {
-        for (uchar x = 0; x < 3; x++)
+        for (byte x = 0; x < 3; x++)
         {
             num += keypadState[y][x];
         }
@@ -280,7 +271,7 @@ uchar getNumKeysPressed()
 bool getKeypadKey(char key)
 {
     // Sanity check, make sure it's only #, *, or 0-9
-    if ((key != 35 || key != 42) && (key < 48 || key > 57)) return false;
+    if ((key != 35 && key != 42) && (key < 48 || key > 57)) return false;
 
     switch (key)
     {

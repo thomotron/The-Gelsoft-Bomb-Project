@@ -7,7 +7,7 @@ struct shift_register {
     portpin ser_clock;
     portpin reg_clock;
     portpin clear;
-}
+};
 struct shift_register shift_register;
 
 struct lcd {
@@ -15,13 +15,14 @@ struct lcd {
     portpin rw;
     portpin rs;
     portpin backlight;
-}
+};
 struct lcd lcd;
 
 void init_shift(portpin data, portpin ser_clock, portpin reg_clock, portpin clear)
 {
     // Initialise the shift register struct
-    shift_register = {
+    shift_register = (struct shift_register)
+    {
         data,
         ser_clock,
         reg_clock,
@@ -32,12 +33,12 @@ void init_shift(portpin data, portpin ser_clock, portpin reg_clock, portpin clea
 void init_lcd(portpin enable, portpin rw, portpin rs, portpin backlight)
 {
     // Initialise the LCD struct
-    lcd = {
+    lcd = (struct lcd) {
         enable,
         rw,
         rs,
         backlight
-    }
+    };
 }
 
 void cmd_clear()
@@ -114,6 +115,6 @@ void write_shift_register(unsigned char value)
     // Shift in the value MSB-first
     for (unsigned char mask = 0b10000000; mask > 0; mask >>= 1)
     {
-
+        break;
     }
 }
