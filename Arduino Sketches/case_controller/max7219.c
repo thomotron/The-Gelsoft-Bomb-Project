@@ -251,7 +251,7 @@ void MAX7219_Clear (void)
 */
 void MAX7219_DisplayChar (char digit, char character)
 {
-  MAX7219_Write(1 << (digit - 1), MAX7219_LookupCode(character));
+  MAX7219_Write(digit & 0x0F, MAX7219_LookupCode(character));
 }
 
 
