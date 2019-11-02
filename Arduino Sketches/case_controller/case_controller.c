@@ -110,7 +110,7 @@ int main() {
 
         // Do some funky display magic based on the bomb state
         // Check if we should remain solid
-        if (running || (!running && timeRemaining < 0) || displayBlankedLast)
+        if (running || (!running && timeRemaining > 0) || displayBlankedLast)
         {
             // Write remaining time to the display and clear the blanked flag
             displayTimeRemaining();
