@@ -2,3 +2,7 @@
 *.elf
 *.hex
 *.o
+
+# CLion
+.idea/
+cmake-build-debug/
