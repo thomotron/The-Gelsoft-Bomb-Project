@@ -46,6 +46,7 @@ void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
 void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
+void displayTimeRemaining();
 
 // State variables
 bool running = true;
