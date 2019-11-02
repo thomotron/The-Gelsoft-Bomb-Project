@@ -50,6 +50,7 @@
 *********************************************************************************************************
 */
 #include <avr/io.h>                                   // microcontroller header file
+#include <stdbool.h>
 #include "max7219.h"                                  // MAX7219 header file
 
 
@@ -246,12 +247,13 @@ void MAX7219_Clear (void)
 * Description: Display a character on the specified digit.
 * Arguments  : digit = digit number (0-7)
 *              character = character to display (0-9, A-Z)
+*              dp = decimal point enabled (true/false)
 * Returns    : none
 *********************************************************************************************************
 */
-void MAX7219_DisplayChar (char digit, char character)
+void MAX7219_DisplayChar (char digit, char character, bool dp)
 {
-  MAX7219_Write(digit & 0x0F, MAX7219_LookupCode(character));
+  MAX7219_Write(digit & 0x0F, MAX7219_LookupCode(character) | (dp ? 0x80 : 0x00));
 }
 
 
@@ -275,8 +277,8 @@ void MAX7219_DisplayChar (char digit, char character)
 *********************************************************************************************************
 */
 static const struct {
-	char   ascii;
-	char   segs;
+	char          ascii;
+	unsigned char segs;
 } MAX7219_Font[] = {
   {' ', 0x00},
   {'0', 0x7e},

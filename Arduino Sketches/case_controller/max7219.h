@@ -20,4 +20,4 @@ void MAX7219_DisplayTestStart (void);
 void MAX7219_DisplayTestStop (void);
 void MAX7219_SetBrightness (char brightness);
 void MAX7219_Clear (void);
-void MAX7219_DisplayChar (char digit, char character);
+void MAX7219_DisplayChar (char digit, char character, bool dp);
