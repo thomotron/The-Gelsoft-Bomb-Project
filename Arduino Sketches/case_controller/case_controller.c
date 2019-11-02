@@ -54,7 +54,7 @@ bool running = true;
 volatile bool solved = false;
 volatile int strikes = 0;
 const int maxStrikes = 3;
-int timeRemaining = 30; // 5-minute countdown
+int timeRemaining = 300; // 5-minute countdown
 bool displayBlinking = false;
 bool displayBlankedLast = false;
 
