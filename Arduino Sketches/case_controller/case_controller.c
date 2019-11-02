@@ -47,6 +47,7 @@ void disableInterrupt(int interrupt);
 void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
 void displayTimeRemaining();
+void updateDisplay();
 
 // State variables
 bool running = true;
@@ -54,6 +55,7 @@ volatile bool solved = false;
 volatile int strikes = 0;
 const int maxStrikes = 3;
 int timeRemaining = 30; // 5-minute countdown
+bool displayBlinking = false;
 bool displayBlankedLast = false;
 
 // Interrupt states
@@ -109,32 +111,20 @@ int main() {
         // Decrement time remaining by 1 second if we're still running
         if (running) timeRemaining--;
 
-        // Do some funky display magic based on the bomb state
-        // Check if we should remain solid
-        if (running || (!running && timeRemaining > 0) || displayBlankedLast)
+        // Update the display based on our current state
+        updateDisplay();
+
+        // Beep the buzzer if running
+        if (running && timeRemaining >= 0)
         {
-            // Write remaining time to the display and clear the blanked flag
-            displayTimeRemaining();
-            displayBlankedLast = false;
+            // Write the pin high
+            BUZZER_PORT |= 1 << BUZZER_PIN;
 
-            // Beep the buzzer if running
-            if (running && timeRemaining >= 0)
-            {
-                // Write the pin high
-                BUZZER_PORT |= 1 << BUZZER_PIN;
+            _delay_ms(50);
+            buzzed = true;
 
-                _delay_ms(50);
-                buzzed = true;
-
-                // Write the pin low
-                BUZZER_PORT &= ~(1 << BUZZER_PIN);
-            }
-        }
-        else
-        {
-            // Blank the display and set the blanked flag
-            MAX7219_Clear();
-            displayBlankedLast = true;
+            // Write the pin low
+            BUZZER_PORT &= ~(1 << BUZZER_PIN);
         }
 
         // Check if we should detonate
@@ -158,6 +148,42 @@ int main() {
 
         if (buzzed) _delay_ms(950); // Wait 950ms, shorter due to buzzer delay
         else _delay_ms(1000); // Wait 1000ms
+    }
+}
+
+void updateDisplay()
+{
+    // Blinking logic
+    // Check if this is the blanking part of the blink cycle if we are blinking
+    if (displayBlinking && !displayBlankedLast)
+    {
+        // Blank the display and set the blanked flag
+        MAX7219_Clear();
+        displayBlankedLast = true;
+
+        // Stop here
+        return;
+    }
+    else
+    {
+        // Reset the blanked flag
+        displayBlankedLast = false;
+    }
+
+    // Actually update the display with content
+    // Check which message we should display
+    if (strikes == maxStrikes || timeRemaining < 0) // Are we dead?
+    {
+        // Write 'DEAD'
+        MAX7219_DisplayChar(1, 'D', false);
+        MAX7219_DisplayChar(2, 'E', false);
+        MAX7219_DisplayChar(3, 'A', false);
+        MAX7219_DisplayChar(4, 'D', false);
+    }
+    else
+    {
+        // Write remaining time
+        displayTimeRemaining();
     }
 }
 
