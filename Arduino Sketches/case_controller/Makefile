@@ -16,6 +16,9 @@ case_controller: case_controller.c
 	# HEXify
 	avr-objcopy -j .text -j .data -O ihex case_controller.elf case_controller.hex
 
+	# Show program size
+	avr-size --format=avr --mcu=$(MCU) case_controller.elf
+
 flash: case_controller
 	# Flash
 	avrdude -p $(MCU) -c $(ISP) -U flash:w:case_controller.hex
