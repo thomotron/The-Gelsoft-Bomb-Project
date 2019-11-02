@@ -189,9 +189,10 @@ void updateDisplay()
 
 void displayTimeRemaining()
 {
-    // Check if we should 'line-out' the display
+    // Check if we have passed the point of no return
     if (timeRemaining < 0)
     {
+        // 'Line-out' the display since we can't do negative numbers
         for (int i = 1; i <= 4; i++)
         {
             MAX7219_DisplayChar(i, '-', false);
@@ -203,8 +204,8 @@ void displayTimeRemaining()
         int minutes = timeRemaining / 60;
         int seconds = timeRemaining - (minutes * 60);
         MAX7219_DisplayChar(1, (char) ((int)(minutes / 10) + 48), false); // Values are offset by 48 for ASCII
-        MAX7219_DisplayChar(2, (char) ((int)(minutes % 10) + 48), true);
-        MAX7219_DisplayChar(3, (char) ((int)(seconds / 10) + 48), true);
+        MAX7219_DisplayChar(2, (char) ((int)(minutes % 10) + 48), true); // DP enabled to show a ':'
+        MAX7219_DisplayChar(3, (char) ((int)(seconds / 10) + 48), true); // between digits 2 and 3
         MAX7219_DisplayChar(4, (char) ((int)(seconds % 10) + 48), false);
     }
 }
