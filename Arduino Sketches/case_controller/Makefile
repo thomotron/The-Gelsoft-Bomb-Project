@@ -1,5 +1,6 @@
 MCU=attiny24
 ISP=usbtiny
+CLOCK=8000000
 
 all: case_controller
 
@@ -8,7 +9,7 @@ clean:
 
 case_controller: case_controller.c
 	# Compile
-	avr-gcc -mmcu=$(MCU) -Os -c case_controller.c
+	avr-gcc -mmcu=$(MCU) -Os -DF_CPU=$(CLOCK)UL -c case_controller.c
 
 	# Link
 	avr-gcc -mmcu=$(MCU) -o case_controller.elf case_controller.o
