@@ -175,10 +175,10 @@ void displayTimeRemaining()
         // Split the remaining time down into digits and display them
         int minutes = timeRemaining / 60;
         int seconds = timeRemaining - (minutes * 60);
-        MAX7219_DisplayChar(4, (char) ((int)(minutes / 10) + 48)); // Values are offset by 48 for ASCII
-        MAX7219_DisplayChar(3, (char) ((int)(minutes % 10) + 48));
-        MAX7219_DisplayChar(2, (char) ((int)(seconds / 10) + 48));
-        MAX7219_DisplayChar(1, (char) ((int)(seconds % 10) + 48));
+        MAX7219_DisplayChar(1, (char) ((int)(minutes / 10) + 48)); // Values are offset by 48 for ASCII
+        MAX7219_DisplayChar(2, (char) ((int)(minutes % 10) + 48));
+        MAX7219_DisplayChar(3, (char) ((int)(seconds / 10) + 48));
+        MAX7219_DisplayChar(4, (char) ((int)(seconds % 10) + 48));
     }
 }
 
