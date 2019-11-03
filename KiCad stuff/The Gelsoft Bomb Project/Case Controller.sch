@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:The Bomb Project-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -154,7 +153,7 @@ Wire Wire Line
 	6850 4350 8000 4350
 Wire Wire Line
 	8000 4250 6850 4250
-Text GLabel 6300 3350 1    50   Input ~ 0
+Text GLabel 6300 3050 1    50   Input ~ 0
 5v
 $Comp
 L power:Earth #PWR0105
@@ -204,8 +203,6 @@ F 3 "~" H 7000 3550 50  0001 C CNN
 	1    7000 3550
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	6300 3400 6300 3350
 Connection ~ 6300 3400
 Wire Wire Line
 	6850 3700 7000 3700
@@ -336,4 +333,35 @@ F 3 "~" H 1800 6150 50  0001 C CNN
 	1    1800 6150
 	1    0    0    -1  
 $EndComp
+$Comp
+L Device:C C1
+U 1 1 5DC04291
+P 6150 3200
+F 0 "C1" V 6000 3200 50  0000 C CNN
+F 1 "0.1uF" V 6300 3200 50  0000 C CNN
+F 2 "Capacitor_THT:C_Axial_L5.1mm_D3.1mm_P10.00mm_Horizontal" H 6188 3050 50  0001 C CNN
+F 3 "~" H 6150 3200 50  0001 C CNN
+	1    6150 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6300 3050 6300 3200
+Wire Wire Line
+	6300 3200 6300 3400
+Connection ~ 6300 3200
+$Comp
+L power:Earth #PWR0108
+U 1 1 5DC0839B
+P 5950 3250
+F 0 "#PWR0108" H 5950 3000 50  0001 C CNN
+F 1 "Earth" H 5950 3100 50  0001 C CNN
+F 2 "" H 5950 3250 50  0001 C CNN
+F 3 "~" H 5950 3250 50  0001 C CNN
+	1    5950 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 3250 5950 3200
+Wire Wire Line
+	5950 3200 6000 3200
 $EndSCHEMATC
