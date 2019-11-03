@@ -105,31 +105,18 @@ int main() {
     init();
 
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
-    while (true)
+    while (running)
     {
         bool buzzed = false;
 
-        // Decrement time remaining by 1 second if we're still running
-        if (running) timeRemaining--;
+        // Decrement time remaining by 1 second
+        timeRemaining--;
 
         // Update the display based on our current state
         updateDisplay();
 
-        // Beep the buzzer if running
-        if (running && timeRemaining >= 0)
-        {
-            // Write the pin high
-            BUZZER_PORT |= 1 << BUZZER_PIN;
-
-            _delay_ms(50);
-            buzzed = true;
-
-            // Write the pin low
-            BUZZER_PORT &= ~(1 << BUZZER_PIN);
-        }
-
         // Check if we should detonate
-        if (running && (timeRemaining < 0 || strikes == maxStrikes))
+        if (timeRemaining < 0 || strikes == maxStrikes)
         {
             // Disable interrupts and clear running flag
             disableInterrupt(0);
@@ -139,17 +126,29 @@ int main() {
             // TODO: Detonate
         }
         // Check if we've been solved
-        else if (running && solved)
+        else if (solved)
         {
             // Disable interrupts and clear running flag
             disableInterrupt(0);
             disableInterrupt(1);
             running = false;
+
+            // Reached an end condition, break out
+            break;
+        }
+
+        // Beep the buzzer if running
+        if (timeRemaining >= 0) {
+            beep(50);
+            buzzed = true;
         }
 
         if (buzzed) _delay_ms(950); // Wait 950ms, shorter due to buzzer delay
         else _delay_ms(1000); // Wait 1000ms
     }
+
+    // Loop forever until we're reset
+    while (true) continue;
 }
 
 void updateDisplay()
