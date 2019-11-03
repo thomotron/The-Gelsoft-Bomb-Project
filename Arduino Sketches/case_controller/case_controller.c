@@ -286,11 +286,11 @@ void writeByteMSB(unsigned char byte)
 void beep(int duration)
 {
     // Write the pin high
-    //BUZZER_PORT |= 1 << BUZZER_PIN;
+    BUZZER_PORT |= 1 << BUZZER_PIN;
 
     // Hacky workaround for runtime-variable delay
     while (duration-- > 0) _delay_ms(1);
 
     // Write the pin low
-    //BUZZER_PORT &= ~(1 << BUZZER_PIN);
+    BUZZER_PORT &= ~(1 << BUZZER_PIN);
 }
