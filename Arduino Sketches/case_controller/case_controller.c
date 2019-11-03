@@ -123,7 +123,12 @@ int main() {
             disableInterrupt(1);
             running = false;
 
-            // TODO: Detonate
+            // TODO: Detonate more spectacularly
+            // For now, we'll just make a nice long beep
+            beep(3000);
+
+            // Reached an end condition, break out
+            break;
         }
         // Check if we've been solved
         else if (solved)
