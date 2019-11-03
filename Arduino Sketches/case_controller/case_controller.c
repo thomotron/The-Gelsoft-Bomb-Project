@@ -107,7 +107,7 @@ int main() {
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
     while (running)
     {
-        bool buzzed = false;
+        int delay_ms = 1000;
 
         // Decrement time remaining by 1 second
         timeRemaining--;
@@ -145,11 +145,11 @@ int main() {
         // Beep the buzzer if running
         if (timeRemaining >= 0) {
             beep(50);
-            buzzed = true;
+            delay_ms -= 50;
         }
 
-        if (buzzed) _delay_ms(950); // Wait 950ms, shorter due to buzzer delay
-        else _delay_ms(1000); // Wait 1000ms
+        // Wait until we have no delay left
+        while (delay_ms-- > 0) _delay_ms(1);
     }
 
     // Loop forever until we're reset
