@@ -48,6 +48,7 @@ void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
 void displayTimeRemaining();
 void updateDisplay();
+void beep(int duration);
 
 // State variables
 bool running = true;
@@ -275,4 +276,17 @@ void writeByteMSB(unsigned char byte)
         // Mask the relevant bit and write it
         writeBit(byte & (1 << i));
     }
+}
+
+// Beeps for the given number of milliseconds
+void beep(int duration)
+{
+    // Write the pin high
+    //BUZZER_PORT |= 1 << BUZZER_PIN;
+
+    // Hacky workaround for runtime-variable delay
+    while (duration-- > 0) _delay_ms(1);
+
+    // Write the pin low
+    //BUZZER_PORT &= ~(1 << BUZZER_PIN);
 }
