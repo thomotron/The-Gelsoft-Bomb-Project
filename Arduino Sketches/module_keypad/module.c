@@ -258,7 +258,7 @@ bool readKeypadKey(unsigned char port, unsigned char row_pin, unsigned char colu
     port |= (1 << row_pin);
 
     // Get the pin state
-    bool state = ((port >> pin) & 1);
+    bool state = ((port >> column_pin) & 1);
 
     // Write the row low
     port &= ~(1 << row_pin);
