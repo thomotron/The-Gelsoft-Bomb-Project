@@ -67,12 +67,17 @@
 
 // Function prototypes
 void init();
-void onDisarm();
-void onLowPower();
+int main();
+void onDisarm(bool disarm);
+void onLowPower(bool enabled);
 void writeBit(bool bit);
-void writeByteMSB(unsigned char byte);
+void writeByteMSB(byte b);
+byte getRandom();
 void generateSequence();
-unsigned char getRandom();
+void updateKeypadState();
+bool readKeypadKey(unsigned char port, unsigned char row_pin, unsigned char column_pin);
+byte getNumKeysPressed();
+bool getKeypadKey(char key);
 
 // Consts
 const char keypadChars[] = {'0','1','2','3','4','5','6','7','8','9','*','#'};
@@ -192,13 +197,13 @@ void writeBit(bool bit)
 
 // Writes a single byte to the given port on the given pin (MSB-first)
 //   byte: Byte to write
-void writeByteMSB(unsigned char byte)
+void writeByteMSB(byte b)
 {
     // Iterate from MSB to LSB
     for (int i = 7; i >= 0; i--)
     {
         // Mask the relevant bit and write it
-        writeBit(byte & (1 << i));
+        writeBit(b & (1 << i));
     }
 }
 
