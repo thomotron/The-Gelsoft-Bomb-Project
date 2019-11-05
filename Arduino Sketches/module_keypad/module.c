@@ -59,6 +59,9 @@
 #define KEY_ROW4_PORT PORTD
 #define KEY_ROW4_PIN 7
 
+// Define some macros for sequence generation
+#define SEQUENCE_LENGTH ((unsigned char) 7)
+
 // Define some macros for type shortcuts
 #define byte unsigned char
 
@@ -73,12 +76,12 @@ unsigned char getRandom();
 
 // Consts
 const char keypadChars[] = {'0','1','2','3','4','5','6','7','8','9','*','#'};
-const byte sequenceLength = 7;
+const byte sequenceLength = SEQUENCE_LENGTH;
 
 // State variables
 bool running = true;
 unsigned short ptrRnd = 0;
-char sequence[sequenceLength];
+char sequence[SEQUENCE_LENGTH];
 byte sequenceIndex;
 
 // Interrupt states
