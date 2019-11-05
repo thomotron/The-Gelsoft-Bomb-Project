@@ -1,5 +1,6 @@
 MCU=atmega8
 ISP=usbtiny
+CLOCK=8000000
 
 all: module
 
@@ -8,13 +9,16 @@ clean:
 
 module: module.c
 	# Compile
-	avr-gcc -mmcu=$(MCU) -c module.c
+	avr-gcc -mmcu=$(MCU) -Os -DF_CPU=$(CLOCK)UL -c module.c
 
 	# Link
 	avr-gcc -mmcu=$(MCU) -o module.elf module.o
 
 	# HEXify
 	avr-objcopy -j .text -j .data -O ihex module.elf module.hex
+
+	# Show program size
+	avr-size --format=avr --mcu=$(MCU) module.elf
 
 flash: module
 	# Flash
