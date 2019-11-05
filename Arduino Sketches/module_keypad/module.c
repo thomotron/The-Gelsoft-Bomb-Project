@@ -165,6 +165,9 @@ int main() {
             // TODO: Update the LCD
         }
     }
+
+    // Loop forever until reset
+    while (true) continue;
 }
 
 // Handler for disarming the module
