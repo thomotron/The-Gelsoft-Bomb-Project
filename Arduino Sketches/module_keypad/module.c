@@ -116,7 +116,7 @@ bool keypadState[4][3] =
         false, // Button 11
         false  // Button 12
     }
-}
+};
 byte numKeysPressed = 0;
 
 void init()
