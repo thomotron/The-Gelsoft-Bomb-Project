@@ -41,11 +41,10 @@ void init();
 void onCorrect();
 void onStrike();
 void enableInterrupts();
-void disableInterrupts();
 void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
 void writeBit(bool bit);
-void writeByteMSB(unsigned char byte);
+void displayTimeRemaining();
 
 // State variables
 bool running = true;
@@ -137,7 +136,7 @@ int main() {
         }
 
         // Check if we should detonate
-        if (running && timeRemaining < 0 || strikes == maxStrikes)
+        if ((running && timeRemaining < 0) || strikes == maxStrikes)
         {
             // Disable interrupts and clear running flag
             disableInterrupt(0);
@@ -201,15 +200,6 @@ void enableInterrupts()
     GIMSK |= (1 << 4);
 }
 
-void disableInterrupts()
-{
-    // Disable global interrupts by setting SREG[7] to 0
-    SREG &= ~(1 << 7);
-
-    // Disable interrupt group PCINT[0-7] by setting GIMSK[4] to 0
-    GIMSK &= ~(1 << 4);
-}
-
 // Enables an interrupt pin in the PCINT[0-7] group
 void enableInterrupt(int interrupt)
 {
@@ -235,16 +225,4 @@ void writeBit(bool bit)
     // Pulse the clock
     CLK_PORT |= 1 << CLK_PIN;
     CLK_PORT &= ~(1 << CLK_PIN);
-}
-
-// Writes a single byte to the given port on the given pin (MSB-first)
-//   byte: Byte to write
-void writeByteMSB(unsigned char byte)
-{
-    // Iterate from MSB to LSB
-    for (int i = 7; i >= 0; i--)
-    {
-        // Mask the relevant bit and write it
-        writeBit(byte & (1 << i));
-    }
 }
