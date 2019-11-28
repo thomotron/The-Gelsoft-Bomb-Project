@@ -1,3 +1,9 @@
 # KiCad backups
 **.bak
 **-bak
+
+# Caches
+**-cache.lib
+fp-info-cache
+fp-lib-table
+sym-lib-table
