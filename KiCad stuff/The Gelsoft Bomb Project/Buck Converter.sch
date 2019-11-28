@@ -1,0 +1,248 @@
+EESchema Schematic File Version 4
+LIBS:Case Controller-cache
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title "Gelsoft Bomb Poject Case Controller"
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Regulator_Switching:TPS563200 U1
+U 1 1 5DDE3F8F
+P 5300 3500
+F 0 "U1" H 5300 3867 50  0000 C CNN
+F 1 "TPS56339DDCR" H 5300 3776 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-6" H 5350 3250 50  0001 L CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tps563200.pdf" H 5300 3500 50  0001 C CNN
+	1    5300 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 5DDE4F8B
+P 3700 3750
+F 0 "C2" H 3800 3800 50  0000 L CNN
+F 1 "10uF" H 3800 3700 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3738 3600 50  0001 C CNN
+F 3 "~" H 3700 3750 50  0001 C CNN
+	1    3700 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C3
+U 1 1 5DDE55D0
+P 4100 3750
+F 0 "C3" H 4215 3796 50  0000 L CNN
+F 1 "10uF" H 4215 3705 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4138 3600 50  0001 C CNN
+F 3 "~" H 4100 3750 50  0001 C CNN
+	1    4100 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C4
+U 1 1 5DDE7274
+P 4500 3750
+F 0 "C4" H 4615 3796 50  0000 L CNN
+F 1 "0.1uF" H 4615 3705 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4538 3600 50  0001 C CNN
+F 3 "~" H 4500 3750 50  0001 C CNN
+	1    4500 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3600 3700 3400
+Wire Wire Line
+	3700 3400 4100 3400
+Wire Wire Line
+	4100 3600 4100 3400
+Connection ~ 4100 3400
+Wire Wire Line
+	4100 3400 4500 3400
+Wire Wire Line
+	4500 3600 4500 3400
+Connection ~ 4500 3400
+Wire Wire Line
+	4500 3400 4900 3400
+$Comp
+L power:Earth #PWR0103
+U 1 1 5DDF2428
+P 5300 4150
+F 0 "#PWR0103" H 5300 3900 50  0001 C CNN
+F 1 "Earth" H 5300 4000 50  0001 C CNN
+F 2 "" H 5300 4150 50  0001 C CNN
+F 3 "~" H 5300 4150 50  0001 C CNN
+	1    5300 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 3900 3700 4100
+Wire Wire Line
+	3700 4100 4100 4100
+Wire Wire Line
+	5300 4100 5300 3800
+Wire Wire Line
+	4100 3900 4100 4100
+Connection ~ 4100 4100
+Wire Wire Line
+	4100 4100 4500 4100
+Wire Wire Line
+	4500 3900 4500 4100
+Connection ~ 4500 4100
+Wire Wire Line
+	4500 4100 5300 4100
+Wire Wire Line
+	5300 4100 5300 4150
+Connection ~ 5300 4100
+$Comp
+L Device:C C5
+U 1 1 5DE06827
+P 6400 3500
+F 0 "C5" V 6250 3400 50  0000 C CNN
+F 1 "0.1uF" V 6250 3600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6438 3350 50  0001 C CNN
+F 3 "~" H 6400 3500 50  0001 C CNN
+	1    6400 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5DE0D1DA
+P 6050 3500
+F 0 "R2" V 5950 3400 50  0000 C CNN
+F 1 "30" V 6050 3500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5980 3500 50  0001 C CNN
+F 3 "~" H 6050 3500 50  0001 C CNN
+	1    6050 3500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6200 3500 6250 3500
+$Comp
+L Device:L L1
+U 1 1 5DE19F2B
+P 6850 3300
+F 0 "L1" V 6950 3400 50  0000 C CNN
+F 1 "5.6uH" V 6950 3200 50  0000 C CNN
+F 2 "Inductor_SMD:L_Abracon_ASPI-0630LR" H 6850 3300 50  0001 C CNN
+F 3 "~" H 6850 3300 50  0001 C CNN
+	1    6850 3300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6550 3500 6650 3500
+Wire Wire Line
+	6650 3500 6650 3300
+Connection ~ 6650 3300
+Wire Wire Line
+	6650 3300 6700 3300
+Wire Wire Line
+	5700 3500 5900 3500
+Wire Wire Line
+	5850 3300 5850 3400
+Wire Wire Line
+	5850 3400 5700 3400
+Wire Wire Line
+	5850 3300 6650 3300
+$Comp
+L Device:R R3
+U 1 1 5DE30954
+P 7050 3500
+F 0 "R3" H 7100 3550 50  0000 L CNN
+F 1 "52.3k" H 7100 3450 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6980 3500 50  0001 C CNN
+F 3 "~" H 7050 3500 50  0001 C CNN
+	1    7050 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 3300 7050 3300
+Wire Wire Line
+	7050 3300 7050 3350
+Wire Wire Line
+	7050 3650 7050 3700
+Wire Wire Line
+	7050 3700 5850 3700
+Wire Wire Line
+	5850 3700 5850 3600
+Wire Wire Line
+	5850 3600 5700 3600
+$Comp
+L Device:R R4
+U 1 1 5DE35798
+P 7050 3900
+F 0 "R4" H 7120 3946 50  0000 L CNN
+F 1 "10k" H 7120 3855 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 6980 3900 50  0001 C CNN
+F 3 "~" H 7050 3900 50  0001 C CNN
+	1    7050 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 3700 7050 3750
+Connection ~ 7050 3700
+$Comp
+L Device:C C6
+U 1 1 5DE37B36
+P 7450 3700
+F 0 "C6" H 7565 3746 50  0000 L CNN
+F 1 "22uF" H 7565 3655 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7488 3550 50  0001 C CNN
+F 3 "~" H 7450 3700 50  0001 C CNN
+	1    7450 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7050 3300 7450 3300
+Wire Wire Line
+	7450 3300 7450 3550
+Connection ~ 7050 3300
+Wire Wire Line
+	7450 3850 7450 4100
+Wire Wire Line
+	7450 4100 7050 4100
+Wire Wire Line
+	7050 4050 7050 4100
+Connection ~ 7050 4100
+Wire Wire Line
+	7050 4100 5300 4100
+$Comp
+L Device:C C7
+U 1 1 5DE3DF11
+P 7850 3700
+F 0 "C7" H 7965 3746 50  0000 L CNN
+F 1 "22uF" H 7965 3655 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7888 3550 50  0001 C CNN
+F 3 "~" H 7850 3700 50  0001 C CNN
+	1    7850 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 3300 7850 3300
+Wire Wire Line
+	7850 3300 7850 3550
+Connection ~ 7450 3300
+Wire Wire Line
+	7850 3850 7850 4100
+Wire Wire Line
+	7850 4100 7450 4100
+Connection ~ 7450 4100
+Wire Wire Line
+	7850 3300 7900 3300
+Connection ~ 7850 3300
+Wire Wire Line
+	3650 3400 3700 3400
+Connection ~ 3700 3400
+Text HLabel 7900 3300 2    50   Input ~ 0
+VOUT
+Text HLabel 3650 3400 0    50   Input ~ 0
+VIN
+$EndSCHEMATC

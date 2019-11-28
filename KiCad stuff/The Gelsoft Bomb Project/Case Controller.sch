@@ -1,9 +1,10 @@
 EESchema Schematic File Version 4
+LIBS:Case Controller-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title "Gelsoft Bomb Poject Case Controller"
 Date ""
 Rev ""
@@ -58,32 +59,10 @@ F 3 "~" H 3350 5000 50  0001 C CNN
 	1    3350 5000
 	1    0    0    -1  
 $EndComp
-$Comp
-L Regulator_Linear:L7805 U1
-U 1 1 5D74AD90
-P 1900 2700
-F 0 "U1" H 1750 2850 50  0000 C CNN
-F 1 "L7805" H 2050 2850 50  0000 C CNN
-F 2 "Package_TO_SOT_THT:TO-220-4_Vertical" H 1925 2550 50  0001 L CIN
-F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 1900 2650 50  0001 C CNN
-	1    1900 2700
-	1    0    0    -1  
-$EndComp
 Text GLabel 1600 2700 0    50   Input ~ 0
 VIN
-Text GLabel 2200 2700 2    50   Output ~ 0
+Text GLabel 1600 2800 0    50   Output ~ 0
 5v
-$Comp
-L power:Earth #PWR0103
-U 1 1 5D74BAAF
-P 1900 3000
-F 0 "#PWR0103" H 1900 2750 50  0001 C CNN
-F 1 "Earth" H 1900 2850 50  0001 C CNN
-F 2 "" H 1900 3000 50  0001 C CNN
-F 3 "~" H 1900 3000 50  0001 C CNN
-	1    1900 3000
-	1    0    0    -1  
-$EndComp
 Text GLabel 3950 4000 2    50   Output ~ 0
 MISO
 Text GLabel 3950 4700 2    50   Input ~ 0
@@ -310,27 +289,27 @@ $EndComp
 $Comp
 L Connector:Conn_01x02_Male J3
 U 1 1 5D74C8FE
-P 2000 6150
-F 0 "J3" H 1972 6032 50  0000 R CNN
-F 1 "Battery Header" H 1972 6123 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2000 6150 50  0001 C CNN
-F 3 "~" H 2000 6150 50  0001 C CNN
-	1    2000 6150
+P 2500 6200
+F 0 "J3" H 2472 6082 50  0000 R CNN
+F 1 "Battery Header" H 2472 6173 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2500 6200 50  0001 C CNN
+F 3 "~" H 2500 6200 50  0001 C CNN
+	1    2500 6200
 	-1   0    0    1   
 $EndComp
 Text GLabel 1700 4950 0    50   BiDi ~ 0
 VIN
-Text GLabel 1800 6050 0    50   Output ~ 0
+Text GLabel 1200 6100 0    50   Output ~ 0
 VIN
 $Comp
 L power:Earth #PWR0107
 U 1 1 5D750EEE
-P 1800 6150
-F 0 "#PWR0107" H 1800 5900 50  0001 C CNN
-F 1 "Earth" H 1800 6000 50  0001 C CNN
-F 2 "" H 1800 6150 50  0001 C CNN
-F 3 "~" H 1800 6150 50  0001 C CNN
-	1    1800 6150
+P 2300 6200
+F 0 "#PWR0107" H 2300 5950 50  0001 C CNN
+F 1 "Earth" H 2300 6050 50  0001 C CNN
+F 2 "" H 2300 6200 50  0001 C CNN
+F 3 "~" H 2300 6200 50  0001 C CNN
+	1    2300 6200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -349,8 +328,8 @@ L Device:CP C1
 U 1 1 5DD72109
 P 6050 3150
 F 0 "C1" V 5900 3050 50  0000 C CNN
-F 1 "100uF" V 5900 3250 50  0000 C CNN
-F 2 "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm" H 6088 3000 50  0001 C CNN
+F 1 "470uF" V 5900 3250 50  0000 C CNN
+F 2 "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm" H 6088 3000 50  0001 C CNN
 F 3 "~" H 6050 3150 50  0001 C CNN
 	1    6050 3150
 	0    1    1    0   
@@ -364,4 +343,40 @@ Wire Wire Line
 Connection ~ 6300 3150
 Wire Wire Line
 	6300 3150 6300 3400
+$Sheet
+S 1600 2600 550  300 
+U 5DE64F8A
+F0 "Buck Converter" 50
+F1 "Buck Converter.sch" 50
+F2 "VIN" I L 1600 2700 50 
+F3 "VOUT" O L 1600 2800 50 
+$EndSheet
+$Comp
+L Switch:SW_SPST SW1
+U 1 1 5DE69AC5
+P 2050 6100
+F 0 "SW1" H 2050 6300 50  0000 C CNN
+F 1 "Power Switch" H 2050 6200 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:SK12D07VG3" H 2050 6100 50  0001 C CNN
+F 3 "~" H 2050 6100 50  0001 C CNN
+	1    2050 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 6100 2300 6100
+Wire Wire Line
+	1850 6100 1600 6100
+$Comp
+L Device:D D1
+U 1 1 5DE00C5D
+P 1450 6100
+F 0 "D1" H 1450 6300 50  0000 C CNN
+F 1 "1N5400" H 1450 6200 50  0000 C CNN
+F 2 "Diode_THT:D_DO-201AD_P15.24mm_Horizontal" H 1450 6100 50  0001 C CNN
+F 3 "~" H 1450 6100 50  0001 C CNN
+	1    1450 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1200 6100 1300 6100
 $EndSCHEMATC
