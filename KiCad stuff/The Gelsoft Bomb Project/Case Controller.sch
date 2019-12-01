@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Case Controller-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -7,7 +6,7 @@ encoding utf-8
 Sheet 1 2
 Title "Gelsoft Bomb Poject Case Controller"
 Date ""
-Rev ""
+Rev "v0.2.0"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -17,35 +16,35 @@ $EndDescr
 $Comp
 L Connector_Generic:Conn_02x03_Odd_Even J1
 U 1 1 5D7346A6
-P 1850 4000
-F 0 "J1" H 1850 4200 50  0000 R CNN
-F 1 "ISP" H 2050 4200 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 1850 4000 50  0001 C CNN
-F 3 "~" H 1850 4000 50  0001 C CNN
-	1    1850 4000
+P 1550 2100
+F 0 "J1" H 1550 2300 50  0000 R CNN
+F 1 "ISP" H 1750 2300 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 1550 2100 50  0001 C CNN
+F 3 "~" H 1550 2100 50  0001 C CNN
+	1    1550 2100
 	1    0    0    -1  
 $EndComp
-Text GLabel 1650 3900 0    50   Output ~ 0
+Text GLabel 1350 2000 0    50   Output ~ 0
 5v
-Text GLabel 1650 4000 0    50   Output ~ 0
+Text GLabel 1350 2100 0    50   Output ~ 0
 MOSI
-Text GLabel 2150 3900 2    50   Input ~ 0
+Text GLabel 1850 2000 2    50   Input ~ 0
 MISO
-Text GLabel 2150 4000 2    50   Output ~ 0
+Text GLabel 1850 2100 2    50   Output ~ 0
 SCK
-Text GLabel 2150 4100 2    50   Output ~ 0
+Text GLabel 1850 2200 2    50   Output ~ 0
 RESET
 Text GLabel 3350 3200 1    50   Input ~ 0
 5v
 $Comp
 L power:Earth #PWR0101
 U 1 1 5D74824F
-P 1650 4100
-F 0 "#PWR0101" H 1650 3850 50  0001 C CNN
-F 1 "Earth" H 1650 3950 50  0001 C CNN
-F 2 "" H 1650 4100 50  0001 C CNN
-F 3 "~" H 1650 4100 50  0001 C CNN
-	1    1650 4100
+P 1350 2200
+F 0 "#PWR0101" H 1350 1950 50  0001 C CNN
+F 1 "Earth" H 1350 2050 50  0001 C CNN
+F 2 "" H 1350 2200 50  0001 C CNN
+F 3 "~" H 1350 2200 50  0001 C CNN
+	1    1350 2200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -59,52 +58,44 @@ F 3 "~" H 3350 5000 50  0001 C CNN
 	1    3350 5000
 	1    0    0    -1  
 $EndComp
-Text GLabel 1600 2700 0    50   Input ~ 0
+Text GLabel 1300 800  0    50   Input ~ 0
 VIN
-Text GLabel 1600 2800 0    50   Output ~ 0
+Text GLabel 1300 900  0    50   Output ~ 0
 5v
-Text GLabel 3950 4000 2    50   Output ~ 0
+Text GLabel 3950 4000 2    50   BiDi ~ 0
 MISO
 Text GLabel 3950 4700 2    50   Input ~ 0
 RESET
-Text GLabel 3950 3900 2    50   Input ~ 0
+Text GLabel 3950 3900 2    50   BiDi ~ 0
 SCK
-Text GLabel 3950 3600 2    50   Input ~ 0
-STRIKE
-Text GLabel 3950 3700 2    50   Output ~ 0
-DISARM
-Text GLabel 3950 4100 2    50   Input ~ 0
+Text GLabel 3950 4100 2    50   BiDi ~ 0
 MOSI
 $Comp
 L Device:Buzzer BZ1
 U 1 1 5D77FD04
-P 1850 3400
-F 0 "BZ1" H 2002 3429 50  0000 L CNN
-F 1 "Buzzer" H 2002 3338 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" V 1825 3500 50  0001 C CNN
-F 3 "~" V 1825 3500 50  0001 C CNN
-	1    1850 3400
+P 1550 1500
+F 0 "BZ1" H 1702 1529 50  0000 L CNN
+F 1 "Buzzer" H 1702 1438 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" V 1525 1600 50  0001 C CNN
+F 3 "~" V 1525 1600 50  0001 C CNN
+	1    1550 1500
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:Earth #PWR0104
 U 1 1 5D780156
-P 1750 3500
-F 0 "#PWR0104" H 1750 3250 50  0001 C CNN
-F 1 "Earth" H 1750 3350 50  0001 C CNN
-F 2 "" H 1750 3500 50  0001 C CNN
-F 3 "~" H 1750 3500 50  0001 C CNN
-	1    1750 3500
+P 1450 1600
+F 0 "#PWR0104" H 1450 1350 50  0001 C CNN
+F 1 "Earth" H 1450 1450 50  0001 C CNN
+F 2 "" H 1450 1600 50  0001 C CNN
+F 3 "~" H 1450 1600 50  0001 C CNN
+	1    1450 1600
 	1    0    0    -1  
 $EndComp
-Text GLabel 1750 3300 0    50   Input ~ 0
+Text GLabel 1450 1400 0    50   Input ~ 0
 BUZZER
 Text GLabel 3950 4200 2    50   Output ~ 0
 BUZZER
-Text GLabel 3950 3800 2    50   Output ~ 0
-LOWPOWER
-Text GLabel 3950 3500 2    50   Input ~ 0
-CORRECT
 $Comp
 L The~Gelsoft~Bomb~Project:HDSP-B09G U4
 U 1 1 5D82E498
@@ -116,8 +107,6 @@ F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/CC56-12CGKWA(V
 	1    9100 4550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6850 4950 8000 4950
 Wire Wire Line
 	8000 4850 6850 4850
 Wire Wire Line
@@ -188,41 +177,37 @@ Wire Wire Line
 Wire Wire Line
 	10200 4950 10250 4950
 Wire Wire Line
-	10250 4950 10250 5450
+	10250 5800 8000 5800
 Wire Wire Line
-	10250 5450 5700 5450
+	5650 5850 10300 5850
 Wire Wire Line
-	5650 5500 10300 5500
-Wire Wire Line
-	10300 5500 10300 4850
+	10300 5850 10300 4850
 Wire Wire Line
 	10300 4850 10200 4850
 Wire Wire Line
 	10200 4750 10350 4750
 Wire Wire Line
-	10350 4750 10350 5550
+	10350 4750 10350 5900
 Wire Wire Line
-	10350 5550 5600 5550
+	10350 5900 5600 5900
 Wire Wire Line
 	5700 4550 5750 4550
 Wire Wire Line
-	5700 4550 5700 5450
+	5700 4550 5700 5800
 Wire Wire Line
 	5650 4450 5750 4450
 Wire Wire Line
-	5650 4450 5650 5500
+	5650 4450 5650 5850
 Wire Wire Line
 	5600 4350 5750 4350
 Wire Wire Line
-	5600 4350 5600 5550
+	5600 4350 5600 5900
 Wire Wire Line
 	5750 4250 5550 4250
 Wire Wire Line
-	5550 4250 5550 5600
+	5550 4250 5550 5950
 Wire Wire Line
-	5550 5600 10400 5600
-Wire Wire Line
-	10400 5600 10400 4650
+	5550 5950 8050 5950
 Wire Wire Line
 	10400 4650 10200 4650
 Wire Wire Line
@@ -257,59 +242,38 @@ $EndComp
 $Comp
 L Connector:DB9_Male J2
 U 1 1 5D86BF6C
-P 2000 5150
-F 0 "J2" H 1800 5750 50  0000 L CNN
-F 1 "Module Connector" H 2000 5750 50  0000 L CNN
-F 2 "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 2000 5150 50  0001 C CNN
-F 3 " ~" H 2000 5150 50  0001 C CNN
-	1    2000 5150
-	1    0    0    -1  
-$EndComp
-Text GLabel 1700 4750 0    50   BiDi ~ 0
-5v
-Text GLabel 1700 5450 0    50   Output ~ 0
-CORRECT
-Text GLabel 1700 5250 0    50   Output ~ 0
-STRIKE
-Text GLabel 1700 5050 0    50   Input ~ 0
-DISARM
-Text GLabel 1700 4850 0    50   Input ~ 0
-LOWPOWER
-$Comp
-L power:Earth #PWR0106
-U 1 1 5D8940BE
-P 1700 5550
-F 0 "#PWR0106" H 1700 5300 50  0001 C CNN
-F 1 "Earth" H 1700 5400 50  0001 C CNN
-F 2 "" H 1700 5550 50  0001 C CNN
-F 3 "~" H 1700 5550 50  0001 C CNN
-	1    1700 5550
+P 1700 3250
+F 0 "J2" H 1500 3850 50  0000 L CNN
+F 1 "Module Connector" H 1700 3850 50  0000 L CNN
+F 2 "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 1700 3250 50  0001 C CNN
+F 3 " ~" H 1700 3250 50  0001 C CNN
+	1    1700 3250
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x02_Male J3
 U 1 1 5D74C8FE
-P 2500 6200
-F 0 "J3" H 2472 6082 50  0000 R CNN
-F 1 "Battery Header" H 2472 6173 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2500 6200 50  0001 C CNN
-F 3 "~" H 2500 6200 50  0001 C CNN
-	1    2500 6200
+P 2200 4300
+F 0 "J3" H 2172 4182 50  0000 R CNN
+F 1 "Battery Header" H 2172 4273 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 2200 4300 50  0001 C CNN
+F 3 "~" H 2200 4300 50  0001 C CNN
+	1    2200 4300
 	-1   0    0    1   
 $EndComp
-Text GLabel 1700 4950 0    50   BiDi ~ 0
+Text GLabel 1400 3150 0    50   BiDi ~ 0
 VIN
-Text GLabel 1200 6100 0    50   Output ~ 0
+Text GLabel 900  4200 0    50   Output ~ 0
 VIN
 $Comp
 L power:Earth #PWR0107
 U 1 1 5D750EEE
-P 2300 6200
-F 0 "#PWR0107" H 2300 5950 50  0001 C CNN
-F 1 "Earth" H 2300 6050 50  0001 C CNN
-F 2 "" H 2300 6200 50  0001 C CNN
-F 3 "~" H 2300 6200 50  0001 C CNN
-	1    2300 6200
+P 2000 4300
+F 0 "#PWR0107" H 2000 4050 50  0001 C CNN
+F 1 "Earth" H 2000 4150 50  0001 C CNN
+F 2 "" H 2000 4300 50  0001 C CNN
+F 3 "~" H 2000 4300 50  0001 C CNN
+	1    2000 4300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -344,39 +308,260 @@ Connection ~ 6300 3150
 Wire Wire Line
 	6300 3150 6300 3400
 $Sheet
-S 1600 2600 550  300 
+S 1300 700  550  300 
 U 5DE64F8A
 F0 "Buck Converter" 50
 F1 "Buck Converter.sch" 50
-F2 "VIN" I L 1600 2700 50 
-F3 "VOUT" O L 1600 2800 50 
+F2 "VIN" I L 1300 800 50 
+F3 "VOUT" O L 1300 900 50 
 $EndSheet
 $Comp
 L Switch:SW_SPST SW1
 U 1 1 5DE69AC5
-P 2050 6100
-F 0 "SW1" H 2050 6300 50  0000 C CNN
-F 1 "Power Switch" H 2050 6200 50  0000 C CNN
-F 2 "The Gelsoft Bomb Project:SK12D07VG3" H 2050 6100 50  0001 C CNN
-F 3 "~" H 2050 6100 50  0001 C CNN
-	1    2050 6100
+P 1750 4200
+F 0 "SW1" H 1750 4400 50  0000 C CNN
+F 1 "Power Switch" H 1750 4300 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:SK12D07VG3" H 1750 4200 50  0001 C CNN
+F 3 "~" H 1750 4200 50  0001 C CNN
+	1    1750 4200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2250 6100 2300 6100
+	1950 4200 2000 4200
 Wire Wire Line
-	1850 6100 1600 6100
+	1550 4200 1300 4200
 $Comp
 L Device:D D1
 U 1 1 5DE00C5D
-P 1450 6100
-F 0 "D1" H 1450 6300 50  0000 C CNN
-F 1 "1N5400" H 1450 6200 50  0000 C CNN
-F 2 "Diode_THT:D_DO-201AD_P15.24mm_Horizontal" H 1450 6100 50  0001 C CNN
-F 3 "~" H 1450 6100 50  0001 C CNN
-	1    1450 6100
+P 1150 4200
+F 0 "D1" H 1150 4400 50  0000 C CNN
+F 1 "1N5400" H 1150 4300 50  0000 C CNN
+F 2 "Diode_THT:D_DO-201AD_P15.24mm_Horizontal" H 1150 4200 50  0001 C CNN
+F 3 "~" H 1150 4200 50  0001 C CNN
+	1    1150 4200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1200 6100 1300 6100
+	900  4200 1000 4200
+$Comp
+L power:Earth #PWR0106
+U 1 1 5D8940BE
+P 1400 3650
+F 0 "#PWR0106" H 1400 3400 50  0001 C CNN
+F 1 "Earth" H 1400 3500 50  0001 C CNN
+F 2 "" H 1400 3650 50  0001 C CNN
+F 3 "~" H 1400 3650 50  0001 C CNN
+	1    1400 3650
+	1    0    0    -1  
+$EndComp
+Text GLabel 1400 2950 0    50   BiDi ~ 0
+5v
+Text GLabel 1400 2850 0    50   Input ~ 0
+SCK
+Text GLabel 1400 3050 0    50   Output ~ 0
+MISO
+Text GLabel 1400 3250 0    50   Input ~ 0
+MOSI
+$Comp
+L Connector:Conn_01x02_Male J4
+U 1 1 5DE4595C
+P 1950 4800
+F 0 "J4" H 1922 4682 50  0000 R CNN
+F 1 "Low-Power Switch" H 1922 4773 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1950 4800 50  0001 C CNN
+F 3 "~" H 1950 4800 50  0001 C CNN
+	1    1950 4800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 5DE46244
+P 1550 4700
+F 0 "R5" V 1450 4600 50  0000 C CNN
+F 1 "100k" V 1450 4800 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1480 4700 50  0001 C CNN
+F 3 "~" H 1550 4700 50  0001 C CNN
+	1    1550 4700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1700 4700 1750 4700
+Text GLabel 1350 4700 0    50   Output ~ 0
+5v
+Text GLabel 1700 4800 0    50   Input ~ 0
+LOWPOWER
+Wire Wire Line
+	1350 4700 1400 4700
+Wire Wire Line
+	1700 4800 1750 4800
+Text GLabel 3950 3500 2    50   Input ~ 0
+LOWPOWER
+Wire Wire Line
+	1400 3350 1400 3450
+Wire Wire Line
+	1400 3450 1400 3550
+Connection ~ 1400 3450
+Wire Wire Line
+	1400 3550 1400 3650
+Connection ~ 1400 3550
+Connection ~ 1400 3650
+$Comp
+L Switch:SW_SPST SW2
+U 1 1 5DE51DB0
+P 1400 5350
+F 0 "SW2" H 1250 5500 50  0000 C CNN
+F 1 "PLUS" H 1600 5500 50  0000 R CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 1400 5350 50  0001 C CNN
+F 3 "~" H 1400 5350 50  0001 C CNN
+	1    1400 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW3
+U 1 1 5DE527E5
+P 1400 5750
+F 0 "SW3" H 1250 5900 50  0000 C CNN
+F 1 "MINUS" H 1600 5900 50  0000 R CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 1400 5750 50  0001 C CNN
+F 3 "~" H 1400 5750 50  0001 C CNN
+	1    1400 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW4
+U 1 1 5DE52D8A
+P 1400 6150
+F 0 "SW4" H 1250 6300 50  0000 C CNN
+F 1 "OK" H 1600 6300 50  0000 R CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 1400 6150 50  0001 C CNN
+F 3 "~" H 1400 6150 50  0001 C CNN
+	1    1400 6150
+	1    0    0    -1  
+$EndComp
+Text GLabel 2000 5350 2    50   Output ~ 0
+PLUS
+Text GLabel 2000 5750 2    50   Output ~ 0
+MINUS
+Text GLabel 2000 6150 2    50   Output ~ 0
+OK
+$Comp
+L Device:R R6
+U 1 1 5DE69C07
+P 1800 5350
+F 0 "R6" V 1700 5250 50  0000 C CNN
+F 1 "100k" V 1700 5450 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1730 5350 50  0001 C CNN
+F 3 "~" H 1800 5350 50  0001 C CNN
+	1    1800 5350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 5DE6A423
+P 1800 5750
+F 0 "R7" V 1700 5650 50  0000 C CNN
+F 1 "100k" V 1700 5850 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1730 5750 50  0001 C CNN
+F 3 "~" H 1800 5750 50  0001 C CNN
+	1    1800 5750
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R8
+U 1 1 5DE6AC21
+P 1800 6150
+F 0 "R8" V 1700 6050 50  0000 C CNN
+F 1 "100k" V 1700 6250 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 1730 6150 50  0001 C CNN
+F 3 "~" H 1800 6150 50  0001 C CNN
+	1    1800 6150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1600 5350 1650 5350
+Wire Wire Line
+	1600 5750 1650 5750
+Wire Wire Line
+	1600 6150 1650 6150
+Wire Wire Line
+	1950 6150 2000 6150
+Wire Wire Line
+	1950 5750 2000 5750
+Wire Wire Line
+	1950 5350 2000 5350
+Text GLabel 1000 5750 0    50   Input ~ 0
+5v
+Wire Wire Line
+	1200 5350 1100 5350
+Wire Wire Line
+	1100 5350 1100 5750
+Wire Wire Line
+	1100 5750 1000 5750
+Wire Wire Line
+	1200 5750 1100 5750
+Connection ~ 1100 5750
+Wire Wire Line
+	1200 6150 1100 6150
+Wire Wire Line
+	1100 6150 1100 5750
+Text GLabel 3950 3600 2    50   Input ~ 0
+PLUS
+Text GLabel 3950 3700 2    50   Input ~ 0
+MINUS
+Text GLabel 3950 3800 2    50   Input ~ 0
+OK
+$Comp
+L Device:LED D3
+U 1 1 5DECBD1F
+P 7650 5550
+F 0 "D3" H 7800 5400 50  0000 C CNN
+F 1 "STRIKE 2" H 7500 5400 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:LED_Square_15x15mm" H 7650 5550 50  0001 C CNN
+F 3 "~" H 7650 5550 50  0001 C CNN
+	1    7650 5550
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 5DECC0F8
+P 7650 5250
+F 0 "D2" H 7800 5100 50  0000 C CNN
+F 1 "STRIKE 1" H 7500 5100 50  0000 C CNN
+F 2 "The Gelsoft Bomb Project:LED_Square_15x15mm" H 7650 5250 50  0001 C CNN
+F 3 "~" H 7650 5250 50  0001 C CNN
+	1    7650 5250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	10250 4950 10250 5800
+Wire Wire Line
+	10400 5950 10400 4650
+Wire Wire Line
+	6850 4950 7350 4950
+Wire Wire Line
+	7350 4950 7350 5250
+Wire Wire Line
+	7350 5250 7500 5250
+Connection ~ 7350 4950
+Wire Wire Line
+	7350 4950 8000 4950
+Wire Wire Line
+	7350 5250 7350 5550
+Wire Wire Line
+	7350 5550 7500 5550
+Connection ~ 7350 5250
+Wire Wire Line
+	7800 5250 8050 5250
+Wire Wire Line
+	8050 5250 8050 5950
+Connection ~ 8050 5950
+Wire Wire Line
+	8050 5950 10400 5950
+Wire Wire Line
+	8000 5550 8000 5800
+Wire Wire Line
+	7800 5550 8000 5550
+Connection ~ 8000 5800
+Wire Wire Line
+	8000 5800 5700 5800
 $EndSCHEMATC
