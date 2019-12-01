@@ -4,6 +4,10 @@ $CMP 3x4_Keypad
 D 3-column 4-row 12-key numeric keypad with star (*) and pound (#) keys
 $ENDCMP
 #
+$CMP Buck_Converter_Module_7-26v
+F https://www.aliexpress.com/item/32636482278.html
+$ENDCMP
+#
 $CMP HDSP-B08G
 D 4 digit 7 segment green LED, common cathode
 K display LED 7-segment
