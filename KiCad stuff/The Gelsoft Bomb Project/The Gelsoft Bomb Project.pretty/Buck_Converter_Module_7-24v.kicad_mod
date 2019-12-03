@@ -1,4 +1,4 @@
-(module Buck_Converter_Module_7-24v (layer F.Cu) (tedit 5DE3D8C8)
+(module Buck_Converter_Module_7-24v (layer F.Cu) (tedit 5DE63340)
   (fp_text reference REF** (at 2 -1) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -21,6 +21,10 @@
   (fp_text user "Vin -" (at 1.27 11.43) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)) (justify left))
   )
+  (fp_line (start 0 0) (end 22.098 0) (layer F.Fab) (width 0.12))
+  (fp_line (start 22.098 0) (end 22.098 17.78) (layer F.Fab) (width 0.12))
+  (fp_line (start 22.098 17.78) (end 0 17.78) (layer F.Fab) (width 0.12))
+  (fp_line (start 0 17.78) (end 0 0) (layer F.Fab) (width 0.12))
   (pad 1 smd custom (at 0 2.5) (size 1.5 1.5) (layers F.Cu F.Paste F.Mask)
     (options (clearance outline) (anchor circle))
     (primitives
