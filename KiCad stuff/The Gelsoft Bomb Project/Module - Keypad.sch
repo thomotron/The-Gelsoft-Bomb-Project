@@ -72,7 +72,7 @@ U 1 1 5D86BF6C
 P 3300 5350
 F 0 "J2" H 3100 5950 50  0000 L CNN
 F 1 "Module Connector" H 3300 5950 50  0000 L CNN
-F 2 "Connector_PinHeader_1.27mm:PinHeader_1x09_P1.27mm_Vertical" H 3300 5350 50  0001 C CNN
+F 2 "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical" H 3300 5350 50  0001 C CNN
 F 3 " ~" H 3300 5350 50  0001 C CNN
 	1    3300 5350
 	1    0    0    -1  
@@ -177,7 +177,7 @@ U 1 1 5D8220AC
 P 7200 5000
 F 0 "U3" H 6750 5500 50  0000 L CNN
 F 1 "3x4_Keypad" H 7250 5500 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical" H 7050 5400 50  0001 C CNN
+F 2 "Connector_IDC:IDC-Header_2x04_P2.54mm_Vertical" H 7050 5400 50  0001 C CNN
 F 3 "" H 7050 5400 50  0001 C CNN
 	1    7200 5000
 	1    0    0    -1  
@@ -194,7 +194,7 @@ F 3 "https://ae01.alicdn.com/kf/HTB1vj1BmdcnBKNjSZR0q6AFqFXa9.jpg" H 7950 2100 5
 	1    0    0    -1  
 $EndComp
 $Comp
-L Module---Keypad-rescue:ATmega8-16PU-MCU_Microchip_ATmega U1
+L MCU_Microchip_ATmega:ATmega8-16PU U1
 U 1 1 5D825400
 P 5000 4350
 F 0 "U1" H 4550 5700 50  0000 C CNN
@@ -284,7 +284,7 @@ U 1 1 5DA19ACD
 P 8150 3100
 F 0 "R1" H 8220 3146 50  0000 L CNN
 F 1 "10k" H 8220 3055 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0614_L14.3mm_D5.7mm_P20.32mm_Horizontal" V 8080 3100 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 8080 3100 50  0001 C CNN
 F 3 "~" H 8150 3100 50  0001 C CNN
 	1    8150 3100
 	1    0    0    -1  
