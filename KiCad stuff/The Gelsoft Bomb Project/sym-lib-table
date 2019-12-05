@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name "The Gelsoft Bomb Project")(type Legacy)(uri "${KIPRJMOD}/The Gelsoft Bomb Project.lib")(options "")(descr ""))
+  (lib (name Module---Keypad-rescue)(type Legacy)(uri "${KIPRJMOD}/Module - Keypad-rescue.lib")(options "")(descr ""))
 )

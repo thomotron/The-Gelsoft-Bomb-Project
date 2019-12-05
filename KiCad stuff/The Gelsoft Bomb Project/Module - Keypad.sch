@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Module - Keypad-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -65,16 +64,8 @@ Text GLabel 4400 3250 0    50   Input ~ 0
 RESET
 Text GLabel 5600 3750 2    50   Input ~ 0
 SCK
-Text GLabel 5600 3350 2    50   Output ~ 0
-STRIKE
-Text GLabel 5600 3450 2    50   Input ~ 0
-DISARM
 Text GLabel 5600 3550 2    50   Input ~ 0
 MOSI
-Text GLabel 4400 3450 0    50   Input ~ 0
-LOWPOWER
-Text GLabel 5600 3250 2    50   Output ~ 0
-CORRECT
 $Comp
 L Connector:DB9_Female J2
 U 1 1 5D86BF6C
@@ -86,28 +77,26 @@ F 3 " ~" H 3300 5350 50  0001 C CNN
 	1    3300 5350
 	1    0    0    -1  
 $EndComp
-Text GLabel 3000 4950 0    50   Output ~ 0
+Text GLabel 3000 5650 0    50   Output ~ 0
 5v
-Text GLabel 3000 5650 0    50   Input ~ 0
-CORRECT
-Text GLabel 3000 5450 0    50   Input ~ 0
-STRIKE
-Text GLabel 3000 5250 0    50   Output ~ 0
-DISARM
-Text GLabel 3000 5050 0    50   Output ~ 0
-LOWPOWER
+Text GLabel 3000 5750 0    50   Output ~ 0
+SCK
+Text GLabel 3000 5350 0    50   Input ~ 0
+MOSI
+Text GLabel 3000 5550 0    50   Output ~ 0
+MISO
 $Comp
 L power:Earth #PWR0106
 U 1 1 5D8940BE
-P 3000 5750
-F 0 "#PWR0106" H 3000 5500 50  0001 C CNN
-F 1 "Earth" H 3000 5600 50  0001 C CNN
-F 2 "" H 3000 5750 50  0001 C CNN
-F 3 "~" H 3000 5750 50  0001 C CNN
-	1    3000 5750
+P 2900 5150
+F 0 "#PWR0106" H 2900 4900 50  0001 C CNN
+F 1 "Earth" H 2900 5000 50  0001 C CNN
+F 2 "" H 2900 5150 50  0001 C CNN
+F 3 "~" H 2900 5150 50  0001 C CNN
+	1    2900 5150
 	1    0    0    -1  
 $EndComp
-Text GLabel 3000 5150 0    50   Output ~ 0
+Text GLabel 3000 5450 0    50   Output ~ 0
 VIN
 $Comp
 L 74xx:74HC595 U2
@@ -147,17 +136,6 @@ F 3 "~" H 7050 3100 50  0001 C CNN
 	1    7050 3100
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:Earth #PWR0104
-U 1 1 5D80FA51
-P 8050 2900
-F 0 "#PWR0104" H 8050 2650 50  0001 C CNN
-F 1 "Earth" H 8050 2750 50  0001 C CNN
-F 2 "" H 8050 2900 50  0001 C CNN
-F 3 "~" H 8050 2900 50  0001 C CNN
-	1    8050 2900
-	1    0    0    -1  
-$EndComp
 Text GLabel 7050 1800 1    50   Input ~ 0
 5v
 Text GLabel 8100 1800 1    50   Input ~ 0
@@ -192,7 +170,7 @@ F 3 "~" H 8150 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8150 3050 8150 2900
+	8150 2950 8150 2900
 $Comp
 L The~Gelsoft~Bomb~Project:3x4_Keypad U3
 U 1 1 5D8220AC
@@ -216,7 +194,7 @@ F 3 "https://ae01.alicdn.com/kf/HTB1vj1BmdcnBKNjSZR0q6AFqFXa9.jpg" H 7950 2100 5
 	1    0    0    -1  
 $EndComp
 $Comp
-L MCU_Microchip_ATmega:ATmega8-16PU U1
+L Module---Keypad-rescue:ATmega8-16PU-MCU_Microchip_ATmega U1
 U 1 1 5D825400
 P 5000 4350
 F 0 "U1" H 4550 5700 50  0000 C CNN
@@ -277,11 +255,11 @@ Wire Wire Line
 Wire Wire Line
 	6300 3550 8700 3550
 Wire Wire Line
-	4400 3650 3850 3650
+	4400 3650 4050 3650
 Wire Wire Line
-	3850 3650 3850 2300
+	4050 3650 4050 2300
 Wire Wire Line
-	3850 2300 6650 2300
+	4050 2300 6650 2300
 Wire Wire Line
 	5600 4150 6250 4150
 Wire Wire Line
@@ -303,12 +281,12 @@ Wire Wire Line
 $Comp
 L Device:R R1
 U 1 1 5DA19ACD
-P 8150 3200
-F 0 "R1" H 8220 3246 50  0000 L CNN
-F 1 "10k" H 8220 3155 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0614_L14.3mm_D5.7mm_P20.32mm_Horizontal" V 8080 3200 50  0001 C CNN
-F 3 "~" H 8150 3200 50  0001 C CNN
-	1    8150 3200
+P 8150 3100
+F 0 "R1" H 8220 3146 50  0000 L CNN
+F 1 "10k" H 8220 3055 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0614_L14.3mm_D5.7mm_P20.32mm_Horizontal" V 8080 3100 50  0001 C CNN
+F 3 "~" H 8150 3100 50  0001 C CNN
+	1    8150 3100
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
@@ -335,4 +313,23 @@ Text Notes 5250 4100 2    50   ~ 0
 Shift Reg.
 Text Notes 5250 4400 2    50   ~ 0
 LCD Mode/LED
+Wire Wire Line
+	3000 4950 3000 5050
+Wire Wire Line
+	3000 5050 3000 5150
+Connection ~ 3000 5050
+Wire Wire Line
+	3000 5150 3000 5250
+Connection ~ 3000 5150
+Wire Wire Line
+	2900 5150 3000 5150
+Wire Wire Line
+	8050 2900 8050 3300
+Wire Wire Line
+	8050 3300 8150 3300
+Wire Wire Line
+	8150 3300 8150 3350
+Wire Wire Line
+	8150 3300 8150 3250
+Connection ~ 8150 3300
 $EndSCHEMATC
