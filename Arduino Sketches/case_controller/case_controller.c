@@ -4,12 +4,12 @@
 //                    ATTiny24A
 //                   .----v----.
 //              Vcc -| 1    14 |- GND
-// B0   MAX7219 DIN -| 2    13 |- CORRECT IN    A0
-// B1   MAX7219 CLK -| 3    12 |- STRIKE IN     A1
-// B3     ISP RESET -| 4    11 |- DISARM OUT    A2
-// B2  MAX7219 LOAD -| 5    10 |- LOWPOWER OUT  A3
-// A7        BUZZER -| 6     9 |- ISP SCK       A4
-// A6      ISP MOSI -| 7     8 |- ISP MISO      A5
+// B0   MAX7219 DIN -| 2    13 |- LOWPOWER      A0
+// B1   MAX7219 CLK -| 3    12 |- BUTTON PLUS   A1
+// B3     ISP RESET -| 4    11 |- BUTTON MINUS  A2
+// B2  MAX7219 LOAD -| 5    10 |- BUTTON OK     A3
+// A7        BUZZER -| 6     9 |- SCK           A4
+// A6          MOSI -| 7     8 |- MISO          A5
 //                   *---------*
 
 #include <avr/io.h>
@@ -17,6 +17,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 #include "max7219.c"
+#include "spi.h"
 
 // Define some macros for the DIN, CLK, and LOAD connections to the MAX2719
 #define DIN_PORT PORTB
@@ -27,10 +28,8 @@
 #define LOAD_PIN 2
 
 // Define some macros for the interrupt pins
-#define CORRECT_PORT PORTA
-#define CORRECT_PIN  0
-#define STRIKE_PORT PORTA
-#define STRIKE_PIN  1
+#define LOWPOWER_PORT PORTA
+#define LOWPOWER_PIN  0
 
 // Define some macros for other pins
 #define BUZZER_PORT PORTA
@@ -38,8 +37,7 @@
 
 // Function prototypes
 void init();
-void onCorrect();
-void onStrike();
+void onLowpower();
 void enableInterrupts();
 void disableInterrupts();
 void enableInterrupt(int interrupt);
@@ -60,23 +58,19 @@ bool displayBlinking = false;
 bool displayBlankedLast = false;
 
 // Interrupt states
-bool correctPinLast;
-bool strikePinLast;
+bool lowpowerPinLast;
 
 // Define interrupt handler
 ISR(PCINT0_vect)
 {
     // Get current interrupt pin states
-    bool correctPin = (CORRECT_PORT >> CORRECT_PIN) & 1;
-    bool strikePin = (STRIKE_PORT >> STRIKE_PIN) & 1;
+    bool lowpowerPin = (LOWPOWER_PORT >> LOWPOWER_PIN) & 1;
 
     // Compare and run handlers
-    if (correctPinLast != correctPin) onCorrect();
-    if (strikePinLast != strikePin) onStrike();
+    if (lowpowerPinLast != lowpowerPin) onLowpower();
 
     // Shift states to history for the next run
-    correctPinLast = correctPin;
-    strikePinLast = strikePin;
+    lowpowerPinLast = lowpowerPin;
 }
 
 void init()
@@ -85,10 +79,9 @@ void init()
     DDRA |= 0b11000000;
     DDRB |= 0b00000000;
 
-    // Set up interrupt registers and enable PCINT0 and PCINT1
+    // Set up interrupt registers and enable PCINT0
     enableInterrupts();
     enableInterrupt(0);
-    enableInterrupt(1);
 
     // Initialise the LED display
     MAX7219_Init();
@@ -215,14 +208,9 @@ void displayTimeRemaining()
     }
 }
 
-void onCorrect()
+void onLowpower()
 {
     solved = true;
-}
-
-void onStrike()
-{
-    strikes = ++strikes > maxStrikes ? maxStrikes : strikes; // Cap strikes at maxStrikes
 }
 
 void enableInterrupts()
