@@ -27,6 +27,14 @@
 #define LOAD_PORT PORTB
 #define LOAD_PIN 2
 
+// Define some macros for the +, -, and OK buttons
+#define BUTTON_PLUS_PORT  PORTA
+#define BUTTON_PLUS_PIN   1
+#define BUTTON_MINUS_PORT PORTA
+#define BUTTON_MINUS_PIN  2
+#define BUTTON_OK_PORT  PORTA
+#define BUTTON_OK_PIN     3
+
 // Define some macros for the interrupt pins
 #define LOWPOWER_PORT PORTA
 #define LOWPOWER_PIN  0
@@ -45,6 +53,7 @@ void disableInterrupt(int interrupt);
 void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
 void displayTimeRemaining();
+void displayTime(int s);
 void updateDisplay();
 void beep(int duration);
 
@@ -96,6 +105,60 @@ void init()
 int main() {
     // Initialise everything
     init();
+
+    // Listen to the +, -, and OK buttons so we can set the time
+    int currentDigit = 0;
+    int digits[] = {0, 0, 0, 0};
+    bool pressed = false;
+    while (true)
+    {
+        // Get each button state and determine which operation to perform
+        char operation = 0;
+        if      (BUTTON_OK_PORT    & (1 << BUTTON_OK_PIN))    operation = 'o';
+        else if (BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN))  operation = '+';
+        else if (BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)) operation = '-';
+
+        // Check if this is a rising edge
+        if (!pressed && operation != 0) {
+            // Set the pressed flag to limit action to the rising edge
+            pressed = true;
+
+            switch (operation) {
+                case '+':
+                    // Increment the current digit, wrapping if necessary
+                    digits[currentDigit]++;
+                    if (digits[currentDigit] > 9) digits[currentDigit] = 0;
+                    break;
+                case '-':
+                    // Decrement the current digit, wrapping if necessary
+                    digits[currentDigit]--;
+                    if (digits[currentDigit] < 0) digits[currentDigit] = 9;
+                    break;
+                case 'o':
+                    // Move on to the next digit
+                    currentDigit++;
+                    break;
+                default:
+                    // Do nothing
+                    break;
+            }
+
+            // Break out if the time has been set
+            if (currentDigit >= 4) break;
+        }
+        else if (pressed && operation == 0)
+        {
+            // Reset the pressed flag
+            pressed = false;
+        }
+
+        // Update the display
+        displayTime((digits[0] * 600) + (digits[1] * 60) + (digits[2] * 10) + (digits[3]));
+    }
+
+    // Interpret the time from the four digits that were set
+    // We don't bother capping here since it's impossible to enter a number larger than the display can handle
+    timeRemaining = (digits[0] * 600) + (digits[1] * 60) + (digits[2] * 10) + (digits[3]);
 
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
     while (running)
@@ -185,7 +248,15 @@ void updateDisplay()
     }
 }
 
+// Displays the current time remaining
 void displayTimeRemaining()
+{
+    displayTime(timeRemaining);
+}
+
+// Displays the given time in seconds
+//   s: Time in seconds
+void displayTime(int s)
 {
     // Check if we have passed the point of no return
     if (timeRemaining < 0)
@@ -199,8 +270,8 @@ void displayTimeRemaining()
     else
     {
         // Split the remaining time down into digits and display them
-        int minutes = timeRemaining / 60;
-        int seconds = timeRemaining - (minutes * 60);
+        int minutes = s / 60;
+        int seconds = s - (minutes * 60);
         MAX7219_DisplayChar(1, (char) ((int)(minutes / 10) + 48), false); // Values are offset by 48 for ASCII
         MAX7219_DisplayChar(2, (char) ((int)(minutes % 10) + 48), true); // DP enabled to show a ':'
         MAX7219_DisplayChar(3, (char) ((int)(seconds / 10) + 48), true); // between digits 2 and 3
@@ -281,4 +352,16 @@ void beep(int duration)
 
     // Write the pin low
     BUZZER_PORT &= ~(1 << BUZZER_PIN);
+}
+
+// Adjusts the time remaining with the given delta value, capping at 0 and 5999
+//   delta: Number of seconds to adjust by, can be positive or negative
+void adjustTimeRemaining(int delta)
+{
+    // Apply the change
+    timeRemaining += delta;
+
+    // Cap at the lower and upper boundaries
+    if (timeRemaining < 0) timeRemaining = 0;
+    if (timeRemaining > 5999) timeRemaining = 5999;
 }
