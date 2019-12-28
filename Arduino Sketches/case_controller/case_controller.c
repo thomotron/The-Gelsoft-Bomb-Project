@@ -53,7 +53,6 @@ void enableInterrupt(int interrupt);
 void disableInterrupt(int interrupt);
 void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
-void displayTimeRemaining();
 void displayTime(int s);
 void updateDisplay();
 void beep(int duration);
@@ -256,14 +255,8 @@ void updateDisplay()
     else
     {
         // Write remaining time
-        displayTimeRemaining();
+        displayTime(timeRemaining);
     }
-}
-
-// Displays the current time remaining
-void displayTimeRemaining()
-{
-    displayTime(timeRemaining);
 }
 
 // Displays the given time in seconds
