@@ -55,6 +55,7 @@ void writeBit(bool bit);
 void writeByteMSB(unsigned char byte);
 void displayTime(int s);
 void updateDisplay();
+bool doDisplayBlink();
 void beep(int duration);
 
 // State variables
@@ -65,6 +66,7 @@ const int maxStrikes = 3;
 int timeRemaining = 300; // 5-minute countdown
 bool displayBlinking = false;
 bool displayBlankedLast = false;
+bool blinkingDigits[4] = {true, true, true, true};
 
 // Interrupt states
 bool lowpowerPinLast;
@@ -182,7 +184,7 @@ int initTime()
             {
                 // Stop the init process if we have set both digits
                 if (currentDigit >= 2) break;
-                    // Otherwise move to the next digit
+                // Otherwise move to the next digit
                 else currentDigit++;
             }
             else if (BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN))
@@ -206,18 +208,29 @@ int initTime()
             pressed = true;
         }
             // Check if this is a falling edge
-        else if (pressed && !(BUTTON_OK_PORT & (1 << BUTTON_OK_PIN)) && !(BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN)) && !(BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)))
+        else if (pressed && !(BUTTON_OK_PORT & (1 << BUTTON_OK_PIN)) && !(BUTTON_PLUS_PORT & (1 << BUTTON_PLUS_PIN)) && !(BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)))
         {
             // Reset the pressed flag
             pressed = false;
         }
 
         // Update the display
+        blinkingDigits[0] = currentDigit == 0;
+        blinkingDigits[1] = currentDigit == 0;
+        blinkingDigits[2] = currentDigit == 1;
+        blinkingDigits[3] = currentDigit == 1;
         displayTime((minutes * 60) + seconds);
+
+        // Wait a bit
+        _delay_ms(250);
     }
 
-    // Unset the display blinking flag
+    // Unset the display blinking flag and reset the blinking digits
     displayBlinking = false;
+    blinkingDigits[0] = true;
+    blinkingDigits[1] = true;
+    blinkingDigits[2] = true;
+    blinkingDigits[3] = true;
 
     return (minutes * 60) + seconds;
 }
@@ -225,22 +238,8 @@ int initTime()
 // Updates the display based on the current time, strikes, and blink flag
 void updateDisplay()
 {
-    // Blinking logic
-    // Check if this is the blanking part of the blink cycle if we are blinking
-    if (displayBlinking && !displayBlankedLast)
-    {
-        // Blank the display and set the blanked flag
-        MAX7219_Clear();
-        displayBlankedLast = true;
-
-        // Stop here
-        return;
-    }
-    else
-    {
-        // Reset the blanked flag
-        displayBlankedLast = false;
-    }
+    // Handle blinking logic, returning if it's blanked out
+    if (doDisplayBlink()) return;
 
     // Actually update the display with content
     // Check which message we should display
@@ -263,6 +262,9 @@ void updateDisplay()
 //   s: Time in seconds
 void displayTime(int s)
 {
+    // Handle blinking logic, returning if it's blanked out
+    if (doDisplayBlink()) return;
+
     // Check if we have passed the point of no return
     if (timeRemaining < 0)
     {
@@ -282,6 +284,32 @@ void displayTime(int s)
         MAX7219_DisplayChar(3, (char) ((int)(seconds / 10) + 48), true); // between digits 2 and 3
         MAX7219_DisplayChar(4, (char) ((int)(seconds % 10) + 48), false);
     }
+}
+
+// Toggles the display blink state, returning whether the display is blanked out
+bool doDisplayBlink()
+{
+    // Check if this is the blanking part of the blink cycle if we are blinking
+    if (displayBlinking && !displayBlankedLast)
+    {
+        // Blank the display and set the blanked flag
+        for (int i = 0; i < 4; i++)
+        {
+            // Blank out the current digit if it's configured to
+            if (blinkingDigits[i]) MAX7219_DisplayChar(i+1, ' ', i == 1 || i == 2);
+        }
+        displayBlankedLast = true;
+
+        // Stop here
+        return true;
+    }
+    else
+    {
+        // Reset the blanked flag
+        displayBlankedLast = false;
+    }
+
+    return false;
 }
 
 void onLowpower()
