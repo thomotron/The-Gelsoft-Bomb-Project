@@ -45,6 +45,7 @@
 
 // Function prototypes
 void init();
+int initTime();
 void onLowpower();
 void enableInterrupts();
 void disableInterrupts();
@@ -102,63 +103,13 @@ void init()
     MAX7219_Clear();
 }
 
-int main() {
+int main()
+{
     // Initialise everything
     init();
 
-    // Listen to the +, -, and OK buttons so we can set the time
-    int currentDigit = 0;
-    int digits[] = {0, 0, 0, 0};
-    bool pressed = false;
-    while (true)
-    {
-        // Get each button state and determine which operation to perform
-        char operation = 0;
-        if      (BUTTON_OK_PORT    & (1 << BUTTON_OK_PIN))    operation = 'o';
-        else if (BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN))  operation = '+';
-        else if (BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)) operation = '-';
-
-        // Check if this is a rising edge
-        if (!pressed && operation != 0) {
-            // Set the pressed flag to limit action to the rising edge
-            pressed = true;
-
-            switch (operation) {
-                case '+':
-                    // Increment the current digit, wrapping if necessary
-                    digits[currentDigit]++;
-                    if (digits[currentDigit] > 9) digits[currentDigit] = 0;
-                    break;
-                case '-':
-                    // Decrement the current digit, wrapping if necessary
-                    digits[currentDigit]--;
-                    if (digits[currentDigit] < 0) digits[currentDigit] = 9;
-                    break;
-                case 'o':
-                    // Move on to the next digit
-                    currentDigit++;
-                    break;
-                default:
-                    // Do nothing
-                    break;
-            }
-
-            // Break out if the time has been set
-            if (currentDigit >= 4) break;
-        }
-        else if (pressed && operation == 0)
-        {
-            // Reset the pressed flag
-            pressed = false;
-        }
-
-        // Update the display
-        displayTime((digits[0] * 600) + (digits[1] * 60) + (digits[2] * 10) + (digits[3]));
-    }
-
-    // Interpret the time from the four digits that were set
-    // We don't bother capping here since it's impossible to enter a number larger than the display can handle
-    timeRemaining = (digits[0] * 600) + (digits[1] * 60) + (digits[2] * 10) + (digits[3]);
+    // Use the +, -, and OK buttons to set the time
+    timeRemaining = initTime();
 
     // Enter the Main Run Loop (MRL) -- Advanced military tech right here
     while (running)
@@ -212,6 +163,67 @@ int main() {
     while (true) continue;
 }
 
+// Prompts the user to enter the time in minutes and seconds, returning the time in seconds
+int initTime()
+{
+    // Set the display blinking flag
+    displayBlinking = true;
+
+    // Set up some state variables
+    int currentDigit = 0;
+    int minutes = 0;
+    int seconds = 0;
+    bool pressed = false;
+    while (true)
+    {
+        // Check if this is a rising edge
+        if (!pressed) {
+            // Get each button state and determine which operation to perform
+            if (BUTTON_OK_PORT & (1 << BUTTON_OK_PIN))
+            {
+                // Stop the init process if we have set both digits
+                if (currentDigit >= 2) break;
+                    // Otherwise move to the next digit
+                else currentDigit++;
+            }
+            else if (BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN))
+            {
+                // Increment minutes or seconds (whichever is current)
+                currentDigit == 0 ? minutes++ : seconds++;
+            }
+            else if (BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN))
+            {
+                // Decrement minutes or seconds (whichever is current)
+                currentDigit == 0 ? minutes-- : seconds--;
+            }
+
+            // Wrap the digits if we've overshot a boundary
+            if (minutes < 0) minutes = 99;
+            else if (minutes > 99) minutes = 0;
+            if (seconds < 0) seconds = 59;
+            else if (seconds > 59) seconds = 0;
+
+            // Set the button as pressed so we don't process a button multiple times for a single press
+            pressed = true;
+        }
+            // Check if this is a falling edge
+        else if (pressed && !(BUTTON_OK_PORT & (1 << BUTTON_OK_PIN)) && !(BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN)) && !(BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)))
+        {
+            // Reset the pressed flag
+            pressed = false;
+        }
+
+        // Update the display
+        displayTime((minutes * 60) + seconds);
+    }
+
+    // Unset the display blinking flag
+    displayBlinking = false;
+
+    return (minutes * 60) + seconds;
+}
+
+// Updates the display based on the current time, strikes, and blink flag
 void updateDisplay()
 {
     // Blinking logic
