@@ -28,11 +28,11 @@
 #define LOAD_PIN 2
 
 // Define some macros for the +, -, and OK buttons
-#define BUTTON_PLUS_PORT  PORTA
+#define BUTTON_PLUS_PORT  PINA
 #define BUTTON_PLUS_PIN   1
-#define BUTTON_MINUS_PORT PORTA
+#define BUTTON_MINUS_PORT PINA
 #define BUTTON_MINUS_PIN  2
-#define BUTTON_OK_PORT  PORTA
+#define BUTTON_OK_PORT  PINA
 #define BUTTON_OK_PIN     3
 
 // Define some macros for the interrupt pins
