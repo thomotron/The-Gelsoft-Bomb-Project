@@ -60,8 +60,8 @@ void beep(int duration);
 
 // State variables
 bool running = true;
-volatile bool solved = false;
-volatile int strikes = 0;
+bool solved = false;
+int strikes = 0;
 const int maxStrikes = 3;
 int timeRemaining = 300; // 5-minute countdown
 volatile bool lowPower = false;
