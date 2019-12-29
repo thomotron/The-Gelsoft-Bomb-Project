@@ -46,7 +46,7 @@
 // Function prototypes
 void init();
 int initTime();
-void onLowpower();
+void onLowpower(bool state);
 void enableInterrupts();
 void disableInterrupts();
 void enableInterrupt(int interrupt);
@@ -64,6 +64,7 @@ volatile bool solved = false;
 volatile int strikes = 0;
 const int maxStrikes = 3;
 int timeRemaining = 300; // 5-minute countdown
+volatile bool lowPower = false;
 bool displayBlinking = false;
 bool displayBlankedLast = false;
 bool blinkingDigits[4] = {true, true, true, true};
@@ -78,7 +79,7 @@ ISR(PCINT0_vect)
     bool lowpowerPin = (LOWPOWER_PORT >> LOWPOWER_PIN) & 1;
 
     // Compare and run handlers
-    if (lowpowerPinLast != lowpowerPin) onLowpower();
+    if (lowpowerPinLast != lowpowerPin) onLowpower(lowpowerPin);
 
     // Shift states to history for the next run
     lowpowerPinLast = lowpowerPin;
@@ -312,9 +313,10 @@ bool doDisplayBlink()
     return false;
 }
 
-void onLowpower()
+void onLowpower(bool state)
 {
-    solved = true;
+    // Set the low power flag
+    lowPower = lowpowerPinLast;
 }
 
 void enableInterrupts()
