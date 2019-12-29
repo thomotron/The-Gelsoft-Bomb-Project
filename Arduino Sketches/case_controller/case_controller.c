@@ -206,8 +206,8 @@ int initTime()
             // Set the button as pressed so we don't process a button multiple times for a single press
             pressed = true;
         }
-            // Check if this is a falling edge
-        else if (pressed && !(BUTTON_OK_PORT & (1 << BUTTON_OK_PIN)) && !(BUTTON_PLUS_PORT & (1 << BUTTON_PLUS_PIN)) && !(BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)))
+        // Check if this is a falling edge
+        else if (!(BUTTON_OK_PORT & (1 << BUTTON_OK_PIN)) && !(BUTTON_PLUS_PORT & (1 << BUTTON_PLUS_PIN)) && !(BUTTON_MINUS_PORT & (1 << BUTTON_MINUS_PIN)))
         {
             // Reset the pressed flag
             pressed = false;
