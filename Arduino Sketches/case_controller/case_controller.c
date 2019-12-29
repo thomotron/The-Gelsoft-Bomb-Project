@@ -175,18 +175,16 @@ int initTime()
     int currentDigit = 0;
     int minutes = 0;
     int seconds = 0;
-    bool pressed = false;
-    while (true)
+    volatile bool pressed = false;
+    while (currentDigit < 2)
     {
         // Check if this is a rising edge
         if (!pressed) {
             // Get each button state and determine which operation to perform
             if (BUTTON_OK_PORT & (1 << BUTTON_OK_PIN))
             {
-                // Stop the init process if we have set both digits
-                if (currentDigit >= 2) break;
-                // Otherwise move to the next digit
-                else currentDigit++;
+                // Move to the next digit
+                currentDigit++;
             }
             else if (BUTTON_PLUS_PORT  & (1 << BUTTON_PLUS_PIN))
             {
