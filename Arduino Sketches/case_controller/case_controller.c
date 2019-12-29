@@ -65,9 +65,20 @@ int strikes = 0;
 const int maxStrikes = 3;
 int timeRemaining = 300; // 5-minute countdown
 volatile bool lowPower = false;
-bool displayBlinking = false;
-bool displayBlankedLast = false;
-bool blinkingDigits[4] = {true, true, true, true};
+struct blinkSettings
+{
+    bool blinking;
+    bool digits[4];
+    bool blanked;
+    int cyclesPerBlink;
+    int currentCycle;
+} blinkSettings = {
+    .blinking = true,
+    .digits = {true, true, true, true},
+    .blanked = false,
+    .cyclesPerBlink = 1,
+    .currentCycle = 1
+};
 
 // Interrupt states
 bool lowpowerPinLast;
@@ -168,8 +179,9 @@ int main()
 // Prompts the user to enter the time in minutes and seconds, returning the time in seconds
 int initTime()
 {
-    // Set the display blinking flag
-    displayBlinking = true;
+    // Set up the display blink settings
+    blinkSettings.blinking = true;
+    blinkSettings.cyclesPerBlink = 250;
 
     // Set up some state variables
     int currentDigit = 0;
@@ -214,22 +226,23 @@ int initTime()
         }
 
         // Update the display
-        blinkingDigits[0] = currentDigit == 0;
-        blinkingDigits[1] = currentDigit == 0;
-        blinkingDigits[2] = currentDigit == 1;
-        blinkingDigits[3] = currentDigit == 1;
+        blinkSettings.digits[0] = currentDigit == 0;
+        blinkSettings.digits[1] = currentDigit == 0;
+        blinkSettings.digits[2] = currentDigit == 1;
+        blinkSettings.digits[3] = currentDigit == 1;
         displayTime((minutes * 60) + seconds);
 
         // Wait a bit
-        _delay_ms(250);
+        _delay_ms(1);
     }
 
-    // Unset the display blinking flag and reset the blinking digits
-    displayBlinking = false;
-    blinkingDigits[0] = true;
-    blinkingDigits[1] = true;
-    blinkingDigits[2] = true;
-    blinkingDigits[3] = true;
+    // Reset the blink settings
+    blinkSettings.blinking = false;
+    blinkSettings.digits[0] = true;
+    blinkSettings.digits[1] = true;
+    blinkSettings.digits[2] = true;
+    blinkSettings.digits[3] = true;
+    blinkSettings.cyclesPerBlink = 1;
 
     return (minutes * 60) + seconds;
 }
@@ -288,27 +301,36 @@ void displayTime(int s)
 // Toggles the display blink state, returning whether the display is blanked out
 bool doDisplayBlink()
 {
-    // Check if this is the blanking part of the blink cycle if we are blinking
-    if (displayBlinking && !displayBlankedLast)
+    // Reset the counter and do nothing if we aren't blinking
+    if (!blinkSettings.blinking)
     {
-        // Blank the display and set the blanked flag
+        blinkSettings.currentCycle = 0;
+        return false;
+    }
+
+    // Check if we've exceeded the allotted number of cycles per blink
+    if (blinkSettings.currentCycle >= blinkSettings.cyclesPerBlink)
+    {
+        // Toggle the blanking state and reset the counter
+        blinkSettings.blanked = !blinkSettings.blanked;
+        blinkSettings.currentCycle = 0;
+    }
+
+    // Check if the display should be blanked
+    if (blinkSettings.blanked)
+    {
+        // Blank out each digit (if they are blink-enabled)
         for (int i = 0; i < 4; i++)
         {
-            // Blank out the current digit if it's configured to
-            if (blinkingDigits[i]) MAX7219_DisplayChar(i+1, ' ', i == 1 || i == 2);
+            if (blinkSettings.digits[i]) MAX7219_DisplayChar(i+1, ' ', i == 1 || i == 2);
         }
-        displayBlankedLast = true;
-
-        // Stop here
-        return true;
-    }
-    else
-    {
-        // Reset the blanked flag
-        displayBlankedLast = false;
     }
 
-    return false;
+    // Increment the cycle
+    blinkSettings.currentCycle++;
+
+    // Return whether the display is blanked
+    return blinkSettings.blanked;
 }
 
 void onLowpower(bool state)
